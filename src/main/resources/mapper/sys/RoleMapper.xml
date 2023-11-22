@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.sys.mapper.RoleMapper">
+
+    <resultMap id="BaseResultMap" type="com.code.sys.entity.Role">
+        <id column="roleid" jdbcType="INTEGER" property="roleid"/>
+        <result column="rolename" jdbcType="VARCHAR" property="rolename"/>
+        <result column="roledesc" jdbcType="VARCHAR" property="roledesc"/>
+        <result column="available" jdbcType="INTEGER" property="available"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      roleid, rolename, roledesc, available
+    </sql>
+
+    <!--查询角色-->
+    <select id="queryAllRole" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role
+        <where>
+            <if test="rolename!=null and rolename!=''">
+                and rolename like concat("%",#{rolename},"%")
+            </if>
+            <if test="roledesc!=null and roledesc!=''">
+                and roledesc like concat("%",#{roledesc},"%")
+            </if>
+            <if test="available!=null">
+                and available=#{available}
+            </if>
+        </where>
+    </select>
+
+    <!--根据角色id删除sys_role_menu里面的数据 deleteRoleMenuByRid-->
+    <delete id="deleteRoleMenuByRid">
+      delete from sys_role_menu where rid=#{value}
+    </delete>
+
+
+    <!--保存角色和菜单之间的关系-->
+    <insert id="insertRoleMenu">
+      insert into sys_role_menu(rid, mid) values(#{rid},#{mid})
+    </insert>
+
+    <!--根据用户id查询角色列表-->
+    <select id="queryRoleByUid" resultMap="BaseResultMap">
+      select t1.* from sys_role t1 inner join sys_user t2 on(t1.roleid=t2.rid) where t2.id=#{uid}
+    </select>
+
+</mapper>

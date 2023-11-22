@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.sys.mapper.BookBorrowMapper">
+
+    <select id="findPage" resultType="com.code.sys.entity.Book">
+        SELECT
+            b.name,
+            b.publish_time,
+            b.author,
+            b.press, b.type, b.pages, b.price, b.status,
+            bb.id, bb.borrow_time, bb.return_time, bb.borrow_status
+        FROM
+            sys_book_borrow bb
+                LEFT JOIN sys_book b ON bb.book_id = b.id
+        where 1=1
+        <if test="userId != null">
+            and bb.user_id = #{userId}
+        </if>
+        <if test="deptId != null">
+            and bb.dept_id = #{deptId}
+        </if>
+    </select>
+
+    <select id="echartsYear" resultType="com.code.sys.vo.BookVo">
+        SELECT
+            count( 1 ) num,
+            DATE_FORMAT( borrow_time, '%Y' ) time
+        FROM
+            sys_book_borrow
+        GROUP BY
+            DATE_FORMAT(
+                    borrow_time,
+                    '%Y'
+                )
+    </select>
+
+    <select id="echartsMonth" resultType="com.code.sys.vo.BookVo">
+        SELECT
+            count( 1 ) num,
+            DATE_FORMAT( borrow_time, '%Y-%m' ) time
+        FROM
+            sys_book_borrow
+        GROUP BY
+            DATE_FORMAT(
+            borrow_time,
+            '%Y-%m'
+            )
+    </select>
+</mapper>
