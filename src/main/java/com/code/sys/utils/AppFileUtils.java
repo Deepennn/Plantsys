@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class AppFileUtils {
 	/**
 	 * 得到文件上传的路径
 	 */
-	public static String PATH="D:/upload/";
+	public static String PATH="/resources/images";
 //	static {
 //		try {
 //			PATH = System.getProperty("user.dir").substring(0, 3);
@@ -30,14 +31,14 @@ public class AppFileUtils {
 
 	/**
 	 * 文件下载
-	 * @param response
+	 *
 	 * @param path
 	 * @param oldName
 	 * @return
 	 */
-	public static ResponseEntity<Object> downloadFile(HttpServletResponse response, String path, String oldName) {
+	public static ResponseEntity<Object> downloadFile(HttpServletRequest request, HttpServletResponse response,String path, String oldName) {
 		//4,使用绝对路径+相对路径去找到文件对象
-		File file=new File(AppFileUtils.PATH,path);
+		File file=new File(request.getSession().getServletContext().getRealPath("resources/images/"),path);
 		//5,判断文件是否存在
 		if(file.exists()) {
 			try {

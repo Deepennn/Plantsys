@@ -101,12 +101,20 @@ public class BookController {
      */
     @RequestMapping("save")
     public ResultObj save(Book book){
+        QueryWrapper<Book> wrapper=new QueryWrapper<>();
+        wrapper.eq("id",book.getId());
+        int count = this.bookService.count(wrapper);
+        if(count>0){
+            return new ResultObj(-1,"图书已存在");
+        }
         try{
+
             User user = (User) WebUtils.getHttpSession().getAttribute("user");
-            if (null == book.getId()) {
+            if (null != user.getDeptId()) {
                 book.setDeptId(user.getDeptId());
             }
-            this.bookService.saveOrUpdate(book);
+            System.out.println(book.getId()+" "+book.getName());
+            this.bookService.save(book);
             return ResultObj.ADD_SUCCESS;
         }catch (Exception e){
             e.printStackTrace();
@@ -134,8 +142,9 @@ public class BookController {
     * @return
     */
     @RequestMapping("delete")
-    public ResultObj delete(Integer id){
+    public ResultObj delete(String id){
         try {
+            System.out.println("delete:id="+id);
             Book book = this.bookService.getById(id);
             if (book.getStatus() == 2) {
                 return new ResultObj(-1, "删除失败，图书正在借阅中");

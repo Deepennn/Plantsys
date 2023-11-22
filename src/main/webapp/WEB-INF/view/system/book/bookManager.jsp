@@ -96,9 +96,14 @@
 <div style="display: none;padding: 20px" id="saveOrUpdateDiv">
     <form class="layui-form" lay-filter="dataFrm" id="dataFrm" style="margin-right: 20px">
         <div class="layui-form-item">
+            <label class="layui-form-label">图书编号:</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" placeholder="请输入图书编号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">名称:</label>
             <div class="layui-input-block">
-                <input type="text" name="id" style="display: none;">
                 <input type="text" name="name" placeholder="请输入图书名称" autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -459,7 +464,7 @@
                 success: function (index) {
                     form.val("dataFrm", data);
                     $('#mobileCoverImg').attr('src', "/file/downloadFile.action?path=" + data.img);
-                    url = "${alfred}/book/save.action";
+                    url = "${alfred}/book/update.action";
                 }
             });
         }

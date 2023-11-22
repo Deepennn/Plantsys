@@ -96,9 +96,14 @@
 <div style="display: none;padding: 20px" id="saveOrUpdateDiv">
     <form class="layui-form" lay-filter="dataFrm" id="dataFrm" style="margin-right: 20px">
         <div class="layui-form-item">
+            <label class="layui-form-label">图书编号:</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" placeholder="请输入图书编号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">名称:</label>
             <div class="layui-input-block">
-                <input type="text" name="id" style="display: none;">
                 <input type="text" name="name" placeholder="请输入图书名称" autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -377,12 +382,12 @@
                 $('#img').val(res.data.src);
             }
         });
-
+        // 导入文件
         upload.render({
             elem: '#import',
             url: '${alfred}/file/importExcel.action',
-            method: "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
-           accept: 'file', //普通文件
+            method: "post",
+           accept: 'file',
              exts: 'xls|excel|xlsx' ,  //只允许excel
             done: function (res, index, upload) {
                 console.log(res.data)
@@ -459,7 +464,7 @@
                 success: function (index) {
                     form.val("dataFrm", data);
                     $('#mobileCoverImg').attr('src', "/file/downloadFile.action?path=" + data.img);
-                    url = "${alfred}/book/save.action";
+                    url = "${alfred}/book/update.action";
                 }
             });
         }
