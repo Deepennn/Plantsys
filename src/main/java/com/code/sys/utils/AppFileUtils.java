@@ -78,18 +78,7 @@ public class AppFileUtils {
 		}
 	}
 
-	/**
-	 * 根据相对路径删除硬盘上文件
-	 * @param path
-	 */
-	public static void deleteFileUsePath(String path) {
-		String realPath=PATH+path;
-		//根据文件
-		File file=new File(realPath);
-		if(file.exists()) {
-			file.delete();
-		}
-	}
+
 
 	/**
 	 * 更改文件名

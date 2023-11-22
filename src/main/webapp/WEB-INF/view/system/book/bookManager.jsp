@@ -377,12 +377,12 @@
                 $('#img').val(res.data.src);
             }
         });
-
+        // 导入文件
         upload.render({
             elem: '#import',
             url: '${alfred}/file/importExcel.action',
-            method: "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
-           accept: 'file', //普通文件
+            method: "post",
+           accept: 'file',
              exts: 'xls|excel|xlsx' ,  //只允许excel
             done: function (res, index, upload) {
                 console.log(res.data)

@@ -32,6 +32,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
    private RoleMapper roleMapper;
+    private UserVo userVo;
 
     @Override
     public User login(UserVo userVo) {
@@ -50,14 +51,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public void addRegister(UserVo userVo) {
-        //设置默认密码
+        //设置密码
         userVo.setPwd(DigestUtils.md5DigestAsHex(userVo.getPwd().getBytes()));
         userVo.setCreateTime(DateUtil.now());
         this.userMapper.insert(userVo);
     }
 
     /**
-     * 重置用户的密码
+     * 重置用户密码
      * @param userid
      */
     @Override
@@ -69,11 +70,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //设置完成后更新
         this.userMapper.updateById(user);
     }
+
+    /**
+     * 更新密码
+     * @param userVo
+     */
     @Override
     public void updateUserPwd(UserVo userVo) {
+        this.userVo = userVo;
         User user = new User();
         user.setId(userVo.getId());
-        //设置默认密码
+        //设置密码
         user.setPwd(DigestUtils.md5DigestAsHex(userVo.getPwd().getBytes()));
         //设置完成后更新
         this.userMapper.updateById(user);
