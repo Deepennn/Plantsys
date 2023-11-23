@@ -12,13 +12,22 @@ import com.code.sys.utils.EmailUtils;
 import com.code.sys.utils.ResultObj;
 import com.code.sys.utils.WebUtils;
 import com.code.sys.vo.UserVo;
+import nl.captcha.Captcha;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
 
 /**
@@ -50,7 +59,7 @@ public class LoginController {
     }
 
     /**
-     * @return 跳转到登录页面的方法
+     * @return 跳转到重置密码页面的方法
      */
     @RequestMapping("toRestPwd")
     public String toRestPwd() {
@@ -65,7 +74,14 @@ public class LoginController {
      * @return
      */
     @RequestMapping("login")
-    public String login(UserVo userVo, Model model) {
+    public String login(UserVo userVo, @RequestParam String captcha, Model model) {
+
+        // 从 Session 中获取之前存储的验证码
+        String sessionCaptcha = (String) WebUtils.getHttpSession().getAttribute("captcha");
+        if (sessionCaptcha == null || !sessionCaptcha.equals(captcha)) {
+            model.addAttribute("error","验证码错误");
+            return "system/main/login";
+        }
         try {
             if(userVo.getType() == null) {
                 model.addAttribute("error", SysConstant.USER_LOGIN_CODE_ERROR_MSG);
@@ -91,6 +107,24 @@ public class LoginController {
         }
     }
 
+    @RequestMapping("captcha")
+    public void captcha(HttpServletRequest request, HttpServletResponse response)throws IOException {
+        // 生成验证码
+        Captcha captcha = new Captcha.Builder(200, 50)
+                .addText()
+                .addBackground()
+                .build();
+
+        // 将验证码存储在Session中
+        request.getSession().setAttribute("captcha", captcha.getAnswer());
+
+        // 设置响应类型为图片 返回验证码图片
+        response.setContentType("image/jpeg");
+        OutputStream os = response.getOutputStream();
+        // 输出验证码图片
+        ImageIO.write(captcha.getImage(), "png", os);
+        os.close();
+    }
     /**
      * 注册
      * @param userVo

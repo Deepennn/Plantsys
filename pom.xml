@@ -280,6 +280,12 @@
       <artifactId>spring-context-support</artifactId>
       <version>5.3.2</version>
     </dependency>
+    <!--  生成随机验证码   -->
+    <dependency>
+      <groupId>com.liferay</groupId>
+      <artifactId>nl.captcha.simplecaptcha</artifactId>
+      <version>1.1.1</version>
+    </dependency>
 
   </dependencies>
 

@@ -19,9 +19,14 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import nl.captcha.Captcha;
 /**
  * 用户管理控制器
  */
@@ -199,4 +204,5 @@ public class UserController {
             return new DataGridView();
         }
     }
+
 }

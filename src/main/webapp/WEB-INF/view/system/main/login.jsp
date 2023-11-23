@@ -16,9 +16,9 @@
 </head>
 <body class="loginBody">
 <br><br>
-<h1 align="center"  style="color:LightSteelBlue ; font-size: 50px">图书管理系统</h1>
-	<br><br>
-	<form class="layui-form" id="loginFrm" method="post" action="${alfred }/login/login.action" style="height: 380px">
+<h1 align="center"  style="color:LightSteelBlue ; font-size: 60px">图书管理系统</h1>
+	<br>
+	<form class="layui-form" id="loginFrm" method="post" action="${alfred }/login/login.action" style="height: 450px">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 			<legend>登录</legend>
 		</fieldset>
@@ -39,11 +39,19 @@
 			<label for="pwd">密码</label>
 			<input type="password" placeholder="请输入密码" autocomplete="off" name="pwd" id="pwd" class="layui-input" lay-verify="required">
 		</div>
+
+		<!-- 验证码 -->
+		<div class="layui-form-item">
+			<input type="text" name="captcha" required lay-verify="required" placeholder="验证码" class="layui-input">
+			<img id="captchaImage" src="/captcha" onclick="refreshCaptcha()">
+		</div>
+
 		<div class="layui-form-item">
 			<button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
 			<br/>
 			<a class="layui-btn layui-block magt3" lay-filter="register" href="${alfred}/login/toRegister.action">注册</a>
 		</div>
+
 		<div class="layui-form-item layui-row" style="text-align: right;color: blue;">
 			<a style="text-align: right " href="${alfred}/login/toRestPwd.action">重置密码</a>
 		</div>
@@ -54,6 +62,10 @@
 	<script type="text/javascript" src="${alfred}/resources/layui/layui.js"></script>
 	<script type="text/javascript" src="${alfred}/resources/js/cache.js"></script>
 	<script type="text/javascript">
+		// 实现刷新验证码的逻辑
+		function refreshCaptcha() {
+			$('#captchaImage').attr('src', '/login/captcha.action?' + Math.random());
+		}
 	layui.use(['form','layer','jquery'],function(){
 	    var form = layui.form,
 	        layer = parent.layer === undefined ? layui.layer : top.layer
@@ -63,7 +75,7 @@
 	        $(this).text("登录中...").attr("disabled","disabled").addClass("layui-disabled");
 	        setTimeout(function(){
 	           $("#loginFrm").submit();
-	        },1000);
+	        },500);
 	        return false;
 	    })
 
