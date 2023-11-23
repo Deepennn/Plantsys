@@ -43,7 +43,7 @@
 		<!-- 验证码 -->
 		<div class="layui-form-item">
 			<input type="text" name="captcha" required lay-verify="required" placeholder="验证码" class="layui-input">
-			<img id="captchaImage" src="/captcha" onclick="refreshCaptcha()">
+			<img id="captchaImage" src="/login/captcha.action?Math.random()" onclick="refreshCaptcha()">
 		</div>
 
 		<div class="layui-form-item">
