@@ -18,16 +18,9 @@ import java.util.Properties;
 public class AppFileUtils {
 
 	/**
-	 * 得到文件上传的路径
+	 * 文件上传到服务器的路径，模拟服务器存储文件的地址
 	 */
-	public static String PATH="/resources/images";
-//	static {
-//		try {
-//			PATH = System.getProperty("user.dir").substring(0, 3);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	public static String PATH="D:/upload/";
 
 	/**
 	 * 文件下载
@@ -36,9 +29,9 @@ public class AppFileUtils {
 	 * @param oldName
 	 * @return
 	 */
-	public static ResponseEntity<Object> downloadFile(HttpServletRequest request, HttpServletResponse response,String path, String oldName) {
+	public static ResponseEntity<Object> downloadFile(HttpServletResponse response,String path, String oldName) {
 		//4,使用绝对路径+相对路径去找到文件对象
-		File file=new File(request.getSession().getServletContext().getRealPath("resources/images/"),path);
+		File file=new File(AppFileUtils.PATH,path);
 		//5,判断文件是否存在
 		if(file.exists()) {
 			try {

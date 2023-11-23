@@ -6,10 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
 
 /**
- * <p>
  * 图书流通表 服务类
- * </p>
- *
  * @author
  * @since 2023-11-18
  */

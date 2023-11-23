@@ -12,10 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <p>
  * 图书借阅表 服务实现类
- * </p>
- *
  * @author
  * @since 2023-11-18
  */

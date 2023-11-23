@@ -11,8 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="format-detection" content="telephone=no">
-	<link rel="icon" href="favicon.ico">
+	<link rel="icon" href="favicon6.ico">
 	<link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="${alfred}/resources/css/index.css" media="all" />
 </head>
@@ -27,7 +26,7 @@
 			    <!-- 顶部右侧菜单 -->
 			    <ul class="layui-nav top_menu">
 					<li class="layui-nav-item" id="userInfo">
-						<a href="javascript:;"><img src="${alfred}/resources/images/${user.img}" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">${user.realname }</cite></a>
+						<a href="javascript:;"><img src="/file/downloadFile.action?path=${user.img}" id="userImage" alt="User Image" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">${user.realname }</cite></a>
 						<dl class="layui-nav-child">
 							<dd><a href="javascript:;" data-url="${alfred}/resources/page/user/userInfo.html"><i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人信息</cite></a></dd>
 							<dd><a href="javascript:;" data-url="${alfred}/resources/page/user/changePwd.html"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a></dd>

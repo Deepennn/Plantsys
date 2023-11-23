@@ -82,42 +82,6 @@ public class MenuController {
     }
 
     /**
-     * 添加菜单
-     * @param menuVo
-     * @return
-     */
-    @RequestMapping("save")
-    public ResultObj save(MenuVo menuVo){
-        try {
-            this.menuService.save(menuVo);
-            //添加成功
-            return ResultObj.ADD_SUCCESS;
-        } catch (Exception e) {
-            e.printStackTrace();
-            //添加失败
-            return ResultObj.ADD_ERROR;
-        }
-    }
-
-    /**
-     * 修改菜单
-     * @param menuVo
-     * @return
-     */
-    @RequestMapping("updateMenu")
-    public ResultObj updateMenu(MenuVo menuVo){
-        try {
-            this.menuService.updateById(menuVo);
-            //修改成功
-            return ResultObj.UPDATE_SUCCESS;
-        } catch (Exception e) {
-            e.printStackTrace();
-            //修改失败
-            return ResultObj.UPDATE_ERROR;
-        }
-    }
-
-    /**
      * 根据id判断当前菜单有没有子节点
      * 有返回code=>0
      * @param menuVo
@@ -130,22 +94,6 @@ public class MenuController {
             return ResultObj.STATUS_TRUE;
         }else {
             return ResultObj.STATUS_FALSE;
-        }
-    }
-
-    /**
-     * 删除菜单
-     * @param menuVo
-     * @return
-     */
-    @RequestMapping("delete")
-    public ResultObj delete(MenuVo menuVo){
-        try {
-            this.menuService.delete(menuVo);
-            return ResultObj.DELETE_SUCCESS;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResultObj.DELETE_ERROR;
         }
     }
 }

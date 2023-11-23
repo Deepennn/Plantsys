@@ -3,15 +3,13 @@ package com.code.sys.constant;
 
 /**
  * 常量接口状态码
- *
- * 2020/2/11 16:29
  */
 public interface SysConstant {
 
     String USER_LOGIN_ERROR_MSG="用户名或密码不正确";
     String USER_LOGIN_CODE_ERROR_MSG = "请选择登陆身份";
     String USER_REGISTER_CODE_SUCCESS_MSG = "注册成功，请登录";
-
+    String USER_REGISTER_CODE_ERROR_MSG = "用户名已存在";
     /**
      *可用状态
      */

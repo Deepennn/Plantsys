@@ -16,11 +16,6 @@ public interface RoleService extends IService<Role> {
      */
     public DataGridView queryAllRole(RoleVo roleVo);
 
-    /**
-     * 根据id删除角色
-     * @param roleid
-     */
-    public void deleteRole(Integer roleid);
 
     /**
      * 加载角色管理分配菜单的json
@@ -29,10 +24,5 @@ public interface RoleService extends IService<Role> {
      */
     public DataGridView initRoleMenuTreeJson(Integer roleid);
 
-    /**
-     * 保存角色和菜单的关系
-     * @param roleVo
-     */
-    public void saveRoleMenu(RoleVo roleVo);
 
 }

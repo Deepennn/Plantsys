@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 
 /**
  * 用户管理控制器
- *
  */
 @RestController
 @RequestMapping("user")
@@ -56,7 +55,7 @@ public class UserController {
     }
 
     /**
-     * 添加修改用户
+     * 添加或修改工作人员
      * @param userVo
      * @return
      */
@@ -168,6 +167,10 @@ public class UserController {
         }
     }
 
+    /**
+     * 获取用户信息
+     * @return
+     */
     @RequestMapping("getUser")
     public DataGridView getUser(){
         try {

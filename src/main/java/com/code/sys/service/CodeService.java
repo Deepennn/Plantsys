@@ -5,10 +5,7 @@ import com.code.sys.entity.Code;
 import com.code.sys.entity.Dept;
 
 /**
- * <p>
  * 单位表 服务类
- * </p>
- *
  * @author
  * @since 2023-11-17
  */

@@ -99,6 +99,14 @@ public class LoginController {
      */
     @RequestMapping("register")
     public String register(UserVo userVo, Model model) {
+        // 判断用户名是否唯一
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("loginname",userVo.getLoginname());
+        int count=this.userService.count(wrapper);
+        if(count > 0) {
+            model.addAttribute("error", SysConstant.USER_REGISTER_CODE_ERROR_MSG);
+            return "system/main/register";
+        }
         userVo.setType(3);
         userVo.setRid(3);
         this.userService.addRegister(userVo);

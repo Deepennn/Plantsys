@@ -15,8 +15,6 @@ import javax.annotation.Resource;
 
 /**
  * 页面跳转控制器
- *
- * 2020/2/14 15:20
  */
 @Controller
 @RequestMapping("sys")
@@ -26,22 +24,6 @@ public class SysController {
     private BookService bookService;
     @Resource
     private BookCirculateService bookCirculateService;
-    /**
-     * @return 跳转到菜单管理
-     */
-    @RequestMapping("toMenuManager")
-    public String toMenuManager(){
-        return "system/menu/menuManager";
-    }
-
-    /**
-     * 跳转到菜单管理的左边的菜单树页面
-     * @return
-     */
-    @RequestMapping("toMenuRight")
-    public String toMenuRight(){
-        return "system/menu/MenuRight";
-    }
 
     /**
      * 跳转到菜单管理的右边的菜单树页面
@@ -50,14 +32,6 @@ public class SysController {
     @RequestMapping("toMenuLeft")
     public String toMenuLeft(){
         return "system/menu/MenuLeft";
-    }
-    /**
-     * 跳转到角色管理
-     * @return
-     */
-    @RequestMapping("toRoleManager")
-    public String toRoleManager(){
-        return "system/role/roleManager";
     }
 
     /**
@@ -69,17 +43,6 @@ public class SysController {
         return "system/user/userManager";
     }
 
-    /**
-     * 跳转到公告管理
-     * @return
-     */
-    @RequestMapping("toNewsManager")
-    public String toNewsManager(Model model){
-        User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("type", user.getType());
-        model.addAttribute("uid", user.getId());
-        return "system/news/newsManager";
-    }
 
     /**
      * 跳转到图书管理

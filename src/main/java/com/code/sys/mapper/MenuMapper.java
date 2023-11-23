@@ -11,17 +11,6 @@ import java.util.List;
  */
 public interface MenuMapper extends BaseMapper<Menu> {
 
-
-    int insert(Menu record);
-
-    int insertSelective(Menu record);
-
-    Menu selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Menu record);
-
-    int updateByPrimaryKey(Menu record);
-
     /**
      * 查询所有菜单
      */
@@ -33,12 +22,6 @@ public interface MenuMapper extends BaseMapper<Menu> {
      * @return
      */
     Integer queryMenuByPid(@Param("pid")Integer pid);
-
-    /**
-     * 根据菜单id删除sys_role_menu里面的数据
-     * @param mid
-     */
-    void deleteRoleMenuByMid(@Param("mid") Integer mid);
 
     /**
      * 根据角色ID查询菜单

@@ -20,8 +20,6 @@ import java.util.List;
 
 /**
  *  角色管理的服务接口
- *
- * 2020/2/17 13:55
  */
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
@@ -42,20 +40,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         Page<Object> page = PageHelper.startPage(roleVo.getPage(),roleVo.getLimit());
         List<Role> data = this.roleMapper.queryAllRole(roleVo);
         return new DataGridView(page.getTotal(),data);
-    }
-
-    /**
-     * 根据角色roleid单个删除角色
-     * @param roleid
-     */
-    @Override
-    public void deleteRole(Integer roleid) {
-        //删除角色表的数据
-        this.roleMapper.deleteById(roleid);
-        //根据角色id删除sys_role_menu里面的数据
-        this.roleMapper.deleteRoleMenuByRid(roleid);
-        //根据角色id删除sys_role_user里面的数据
-        this.roleMapper.deleteRoleUserByRid(roleid);
     }
 
     @Override
@@ -86,15 +70,4 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         return new DataGridView(data);
     }
 
-    @Override
-    public void saveRoleMenu(RoleVo roleVo) {
-        Integer rid=roleVo.getRoleid();
-        Integer [] mids=roleVo.getIds();
-        //根据rid删除sys_role_menu里面的所有数据
-        this.roleMapper.deleteRoleMenuByRid(rid);
-        //保存角色和菜单的关系
-        for (Integer mid : mids) {
-            this.roleMapper.insertRoleMenu(rid,mid);
-        }
-    }
 }

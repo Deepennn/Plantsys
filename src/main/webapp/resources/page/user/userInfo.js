@@ -15,6 +15,7 @@ layui.use(['form','layer','upload','laydate'],function(){
         $('input[name="sex"][value='+userInfo.sex+']').prop("checked",true)
         form.render('radio')
         $(".phone").val(userInfo.phone); //手机号
+        $(".email").val(userInfo.email); //邮箱
         $(".address").val(userInfo.address); //地址
         $(".deptName").val(userInfo.deptName); //工作单位
     })

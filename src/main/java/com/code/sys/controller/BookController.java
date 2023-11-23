@@ -22,10 +22,7 @@ import com.code.sys.entity.Book;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>
  *  前端控制器
- * </p>
- *
  */
 @RestController
 @RequestMapping("/book")

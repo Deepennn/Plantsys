@@ -26,10 +26,7 @@ import com.code.sys.entity.BookBorrow;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>
  * 图书借阅表 前端控制器
- * </p>
- *
  */
 @RestController
 @RequestMapping("/bookBorrow")

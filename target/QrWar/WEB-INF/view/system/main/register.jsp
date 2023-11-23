@@ -10,8 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="format-detection" content="telephone=no">
-	<link rel="icon" href="${alfred}/resources/favicon.ico">
+	<link rel="icon" href="${alfred}/resources/favicon6.ico">
 	<link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="${alfred}/resources/css/public.css" media="all" />
 </head>
@@ -23,6 +22,9 @@
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 			<legend>注册</legend>
 		</fieldset>
+		<div class="layui-form-item layui-row" style="text-align: center;color: red;">
+			${error}
+		</div>
 		<div class="layui-form-item input-item">
 			<label for="loginname">用户名</label>
 			<input type="text" placeholder="请输入用户名" autocomplete="off" name="loginname" id="loginname" class="layui-input" lay-verify="required">
@@ -62,9 +64,6 @@
 		</div>
 		<div class="layui-form-item">
 			<button class="layui-btn layui-block" lay-filter="login" lay-submit>注册</button>
-		</div>
-		<div class="layui-form-item layui-row" style="text-align: center;color: red;">
-			${error}
 		</div>
 	</form>
 	<script type="text/javascript" src="${alfred}/resources/layui/layui.js"></script>

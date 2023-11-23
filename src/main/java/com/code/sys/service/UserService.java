@@ -7,7 +7,6 @@ import com.code.sys.vo.UserVo;
 
 /**
  * 用户服务接口
- *
  */
 public interface UserService extends IService<User> {
 

@@ -22,7 +22,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,18 +48,14 @@ public class FileController {
 	 */
 	@RequestMapping("uploadFile")
 	@ResponseBody
-	public DataGridView uploadFile(MultipartFile mf, HttpServletRequest request) throws IllegalStateException, IOException {
+	public DataGridView uploadFile(MultipartFile mf) throws IllegalStateException, IOException {
 		// 将文件上传到的父目录
-//		String parentPath = AppFileUtils.PATH;
-//		String parentPath = "/resources/images/";
-		String parentPath = request.getSession().getServletContext().getRealPath("resources/images/");
-		System.out.println("parentPath："+parentPath);
+		String parentPath = AppFileUtils.PATH;
 		// 得到当前日期作为文件夹名称
 		String dirName = RandomUtils.getCurrentDateForString();
 		// 构造文件夹对象
 		File dirFile = new File(parentPath, dirName);
 		if (!dirFile.exists()) {
-			System.out.println("不存在");
 			dirFile.mkdirs();// 创建文件夹
 		}
 		// 得到文件原名
@@ -79,8 +78,8 @@ public class FileController {
 	 * 不下载只显示
 	 */
 	@RequestMapping("downloadShowFile")
-	public ResponseEntity<Object> downloadShowFile(String path, HttpServletResponse response,HttpServletRequest request) {
-		return AppFileUtils.downloadFile(request,response, path, "");
+	public ResponseEntity<Object> downloadShowFile(String path, HttpServletResponse response) {
+		return AppFileUtils.downloadFile(response, path, "");
 	}
 
 	/**
@@ -92,7 +91,7 @@ public class FileController {
 	@RequestMapping("downloadFile")
 	public ResponseEntity<Object> downloadFile(String path, HttpServletResponse response,HttpServletRequest request) {
 		String oldName="";
-		return AppFileUtils.downloadFile(request, response, path, oldName);
+		return AppFileUtils.downloadFile(response, path, oldName);
 	}
 
 	/**
@@ -108,6 +107,33 @@ public class FileController {
 			ExcelReader reader = ExcelUtil.getReader(file.getInputStream());
 			// 将excel的列映射到实实体类对应的字段
 			List<Book> books = reader.readAll(Book.class);
+
+			// 得到当前日期作为文件夹名称
+			String dirName = RandomUtils.getCurrentDateForString();
+			// 构造文件夹对象
+			File dirFile = new File(AppFileUtils.PATH, dirName);
+
+			if (!dirFile.exists()) {
+				dirFile.mkdirs();// 创建文件夹
+			}
+			for(Book book:books){
+				// 获取源通道
+				FileChannel sourceChannel = new FileInputStream(book.getImg()).getChannel();
+				// 得到文件原名
+				String oldName = new File(book.getImg()).getName();
+				// 根据文件原名得到新名
+				String newName = RandomUtils.createFileNameUseTime(oldName, "");
+
+				// 获取目的通道
+				FileChannel destChannel = new FileOutputStream(dirFile+"/"+newName).getChannel();
+				sourceChannel.transferTo(0, sourceChannel.size(), destChannel);
+
+
+				book.setImg(dirName+"/"+newName);
+
+				sourceChannel.close();
+				destChannel.close();
+			}
 			bookService.saveBatch(books);
 			//返回影响的记录数
 			return new ResultObj(0, "导入成功");

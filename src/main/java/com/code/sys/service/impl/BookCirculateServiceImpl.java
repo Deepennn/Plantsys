@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * <p>
  * 图书流通表 服务实现类
- * </p>
  *
  * @author
  * @since 2023-11-18

@@ -25,7 +25,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     }
 
     /**
-     * 权限管理做完成后再回来改
+     * 根据用户id查询菜单
      * @param menuVo
      * @param userId
      * @return
@@ -58,15 +58,4 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return this.menuMapper.queryMenuByPid(pid);
     }
 
-    /**
-     * 删除菜单
-     * @param menuVo
-     */
-    @Override
-    public void delete(MenuVo menuVo) {
-        //删除菜单的数据
-        this.menuMapper.deleteById(menuVo.getId());
-        //根据id删除sys_role_menu里面的数据
-        this.menuMapper.deleteRoleMenuByMid(menuVo.getId());
-    }
 }

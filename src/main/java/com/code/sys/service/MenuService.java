@@ -38,9 +38,4 @@ public interface MenuService extends IService<Menu> {
      **/
     Integer queryMenuByPid(Integer pid);
 
-    /**
-     * 删除菜单
-     * @param menuVo
-     */
-    void delete(MenuVo menuVo);
 }

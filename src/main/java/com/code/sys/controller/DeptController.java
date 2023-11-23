@@ -20,9 +20,7 @@ import com.code.sys.entity.Dept;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>
  * 单位表 前端控制器
- * </p>
  *
  */
 @RestController
