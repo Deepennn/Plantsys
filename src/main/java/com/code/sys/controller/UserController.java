@@ -53,9 +53,8 @@ public class UserController {
         }
         return new DataGridView(page.getTotal(),data);
     }
-
     /**
-     * 添加或修改工作人员
+     * 添加或修改用户
      * @param userVo
      * @return
      */
@@ -71,6 +70,7 @@ public class UserController {
                     userVo.setPwd(DigestUtils.md5DigestAsHex(userVo.getLoginname().getBytes()));
                 }
                 userVo.setCreateTime(DateUtil.now());
+
             }
 
             // 编号唯一
@@ -83,13 +83,14 @@ public class UserController {
             if (count > 0) {
                 return new ResultObj(-1, "用户名已存在");
             }
+//            User user=this.userService.getById(userVo.getId());
             userVo.setRid(2);
             userVo.setType(2);
             this.userService.saveOrUpdate(userVo);
-            return ResultObj.ADD_SUCCESS;
+            return ResultObj.OPERATE_SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
-            return ResultObj.ADD_ERROR;
+            return ResultObj.OPERATE_ERRO;
         }
     }
 

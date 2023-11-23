@@ -256,7 +256,7 @@
             });
         }
 
-        //打开修改页面
+        //打开编辑页面
         function openUpdateUser(data) {
             mainIndex = layer.open({
                 type: 1,
