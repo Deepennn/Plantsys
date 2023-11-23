@@ -93,7 +93,21 @@ public class UserController {
             return ResultObj.OPERATE_ERRO;
         }
     }
+    @RequestMapping("updateUser")
+    public ResultObj updateUser(UserVo userVo){
 
+        try{
+            // 加上ID
+            User user=(User)WebUtils.getHttpSession().getAttribute("user");
+            userVo.setId(user.getId());
+
+            this.userService.saveOrUpdate(userVo);
+            return ResultObj.UPDATE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
     /**
      * 删除用户
      * @param userVo

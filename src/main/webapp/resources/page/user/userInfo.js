@@ -28,7 +28,7 @@ layui.use(['form','layer','upload','laydate'],function(){
             layer.close(index);
             layer.msg("提交成功！");
             var params = $("#userInfoForm").serialize();
-            $.post("/user/save.action", params, function (res) {
+            $.post("/user/updateUser.action", params, function (res) {
                 layer.msg(res.msg);
                 //刷新数据表格
                 tableIns.reload();
