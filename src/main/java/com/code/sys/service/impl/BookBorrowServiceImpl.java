@@ -20,7 +20,7 @@ import java.util.Map;
 public class BookBorrowServiceImpl extends ServiceImpl<BookBorrowMapper, BookBorrow> implements BookBorrowService {
 
     @Override
-    public List<Book> findPage(Integer userId, Integer deptId) {
+    public List<BookBorrow> findPage(Integer userId, Integer deptId) {
         return this.baseMapper.findPage(userId, deptId);
     }
 

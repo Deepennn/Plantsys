@@ -47,10 +47,10 @@
 <!-- 数据表格开始 -->
 <table class="layui-hide" id="newsTable" lay-filter="newsTable"></table>
 <div style="display: none;" id="newsToolBar">
-    <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">增加</button>
+    <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">新增</button>
 </div>
 <div id="newsBar" style="display: none;">
-    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-warm layui-btn-xs layui-btn-radius" lay-event="viewNews">详情</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="del">删除</a>
 </div>
@@ -241,8 +241,8 @@
                         tableIns.reload();
                     })
                 });
-            } else if (layEvent === 'edit') { //编辑
-                //编辑，打开修改界面
+            } else if (layEvent === 'edit') { //修改
+                //修改，打开修改界面
                 openUpdateNews(data);
             } else if (layEvent === 'viewNews') {//查看
                 viewNews(data);
@@ -252,11 +252,11 @@
         var url;
         var mainIndex;
 
-        //打开添加页面
+        //打开新建页面
         function openAddNews() {
             mainIndex = layer.open({
                 type: 1,
-                title: '添加图书信息',
+                title: '新建单位信息',
                 content: $("#saveOrUpdateDiv"),
                 area: ['700px', '540px'],
                 success: function (index) {
@@ -271,7 +271,7 @@
         function openUpdateNews(data) {
             mainIndex = layer.open({
                 type: 1,
-                title: '修改图书信息',
+                title: '修改单位信息',
                 content: $("#saveOrUpdateDiv"),
                 area: ['700px', '540px'],
                 success: function (index) {

@@ -59,9 +59,10 @@
             , cellMinWidth: 100 //设置列的最小默认宽度
             , page: true  //是否启用分页
             , cols: [[   //列表数据
-                {field: 'id', title: 'ID', align: 'center'}
+                {field: 'id', title: '流通ID', align: 'center'}
+                , {field: 'bookId', title: '图书编号', align: 'center'}
                 , {field: 'bookName', title: '图书名称', align: 'center'}
-                , {field: 'deptName', title: '所属单位', align: 'center'}
+                , {field: 'deptName', title: '被流通单位', align: 'center'}
                 , {field: 'circulateDeptName', title: '我方单位', align: 'center'}
                 , {field: 'circulateTime', title: '流通时间', align: 'center'}
                 , {field: 'returnTime', title: '归还时间', align: 'center'}
@@ -111,7 +112,7 @@
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if (layEvent === 'del') { //删除
 
-            } else if (layEvent === 'edit') { //编辑
+            } else if (layEvent === 'edit') { //修改
                 layer.confirm('是否归还【' + data.bookName + '】这个图书么？', function (index) {
                     //向服务端发送删除指令
                     $.post("/bookCirculate/update.action", {id: data.id, circulateStatus: 3}, function (res) {

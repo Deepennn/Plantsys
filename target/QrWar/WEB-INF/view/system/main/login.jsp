@@ -21,7 +21,7 @@
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 			<legend>请登录</legend>
 		</fieldset>
-		<label class="layui-form-label" for="rid">请选择身份</label>
+		<label class="layui-form-label">请选择身份</label>
 		<div class="layui-form-item input-item">
 			<select name="rid">
 				<option value="" selected="selected">请选择身份</option>

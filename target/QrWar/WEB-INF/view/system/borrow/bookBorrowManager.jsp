@@ -68,14 +68,15 @@
             , cellMinWidth: 100 //设置列的最小默认宽度
             , page: true  //是否启用分页
             , cols: [[   //列表数据
-                 {field: 'id', title: '编号', align: 'center'}
-                , {field: 'name', title: '图书名称', align: 'center'}
-                , {field: 'publishTime', title: '出版时间', align: 'center'}
-                , {field: 'author', title: '作者', align: 'center'}
-                , {field: 'press', title: '出版社', align: 'center'}
-                , {field: 'type', title: '图书分类', align: 'center'}
-                , {field: 'pages', title: '页数', align: 'center'}
-                , {field: 'price', title: '价格', align: 'center'}
+                  {field: 'id', title: '借阅ID', align: 'center'}
+                , {field: 'bookId', title: '图书编号', align: 'center'}
+                , {field: 'userId', title: '读者ID', align: 'center'}
+                , {field: 'userName', title: '读者名称', align: 'center'}
+                , {field: 'phone', title: '联系方式', align: 'center'}
+                , {field: 'reason', title: '借阅理由', align: 'center'}
+                , {field: 'remark', title: '备注', align: 'center'}
+                , {field: 'borrowTime', title: '借阅时间', align: 'center'}
+                , {field: 'returnTime', title: '归还时间', align: 'center'}
                 , {field: 'borrowStatus', title: '借阅状态', align: 'center',templet: function (d) {
                         if (d.borrowStatus == '0') {
                             return '待审核';

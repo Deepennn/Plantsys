@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public interface BookBorrowMapper extends BaseMapper<BookBorrow> {
 
-    List<Book> findPage(@Param("userId") Integer userId, @Param("deptId") Integer deptId);
+    List<BookBorrow> findPage(@Param("userId") Integer userId, @Param("deptId") Integer deptId);
 
     List<BookVo> echartsYear(@Param("deptId") Integer deptId);
     List<BookVo> echartsMonth(@Param("deptId") Integer deptId);

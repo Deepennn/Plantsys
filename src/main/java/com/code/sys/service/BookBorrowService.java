@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public interface BookBorrowService extends IService<BookBorrow> {
 
-    List<Book> findPage(Integer userId, Integer deptId);
+    List<BookBorrow> findPage(Integer userId, Integer deptId);
 
     List<BookVo> echarts(Integer deptId, Integer type);
 }

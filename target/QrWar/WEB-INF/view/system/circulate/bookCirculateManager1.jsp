@@ -62,7 +62,8 @@
             , cellMinWidth: 100 //设置列的最小默认宽度
             , page: true  //是否启用分页
             , cols: [[   //列表数据
-                {field: 'id', title: 'ID', align: 'center'}
+                {field: 'id', title: '流通ID', align: 'center'}
+                , {field: 'bookId', title: '图书编号', align: 'center'}
                 , {field: 'bookName', title: '图书名称', align: 'center'}
                 , {field: 'deptName', title: '所属单位', align: 'center'}
                 , {field: 'circulateDeptName', title: '对方单位', align: 'center'}

@@ -58,7 +58,7 @@ public class LoginController {
     }
 
     /**
-     * @return 跳转到登录页面的方法
+     * @return 跳转到注册页面的方法
      */
     @RequestMapping("toRegister")
     public String toRegister() {

@@ -53,7 +53,7 @@
     <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">增加工作人员</button>
 </div>
 <div id="userBar" style="display: none;">
-    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">修改</a>
     <a id="delebtn" class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="del">删除</a>
 </div>
 
@@ -235,8 +235,8 @@
                         tableIns.reload();
                     })
                 });
-            } else if (layEvent === 'edit') { //编辑
-                //编辑，打开修改界面
+            } else if (layEvent === 'edit') { //修改
+                //修改，打开修改界面
                 if(data.rid===3 || data.rid===1){
                     $('#dept').prop('disabled', true);
                 }else{
@@ -263,12 +263,12 @@
                 }
             });
         }
-        //打开编辑页面
+        //打开修改页面
         function openUpdateUser(data) {
 
             mainIndex = layer.open({
                 type: 1,
-                title: '编辑',
+                title: '修改',
                 content: $("#saveOrUpdateDiv"),
                 area: ['700px', '580px'],
                 success: function (index) {

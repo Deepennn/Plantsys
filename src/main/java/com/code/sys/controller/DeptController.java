@@ -46,7 +46,7 @@ public class DeptController {
     }
 
     /**
-     * 添加/编辑
+     * 添加/修改
      * @return
      */
     @RequestMapping("save")

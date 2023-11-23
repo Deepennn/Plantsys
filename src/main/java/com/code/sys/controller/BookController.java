@@ -93,7 +93,7 @@ public class BookController {
         return new DataGridView(page.getTotal(),data);
     }
     /**
-     * 添加/编辑
+     * 添加/修改
      * @return
      */
     @RequestMapping("save")
@@ -120,7 +120,7 @@ public class BookController {
     }
 
     /**
-     * 添加/编辑
+     * 添加/修改
      * @return
      */
     @RequestMapping("update")

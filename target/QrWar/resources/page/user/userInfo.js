@@ -48,7 +48,7 @@ layui.use(['form','layer','upload','laydate'],function(){
             params = "pwd=" + pwd;
             // $("#pwdForm").submit();
             $.post("/user/updateUserPwd.action", params, function (res) {
-                layer.msg(res.msg);
+                // layer.msg(res.msg);
                 //刷新数据表格
                 tableIns.reload();
             })

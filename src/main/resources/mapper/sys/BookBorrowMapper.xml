@@ -2,13 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.code.sys.mapper.BookBorrowMapper">
 
-    <select id="findPage" resultType="com.code.sys.entity.Book">
+    <select id="findPage" resultType="com.code.sys.entity.BookBorrow">
         SELECT
-            b.name,
-            b.publish_time,
-            b.author,
-            b.press, b.type, b.pages, b.price, b.status,
-            bb.id, bb.borrow_time, bb.return_time, bb.borrow_status
+            bb.id,
+            bb.book_id,
+            bb.user_id,
+            bb.reason,
+            bb.user_name,
+            bb.phone,
+            bb.remark,
+            bb.borrow_time, bb.return_time, bb.borrow_status
         FROM
             sys_book_borrow bb
                 LEFT JOIN sys_book b ON bb.book_id = b.id

@@ -68,14 +68,14 @@
 <table class="layui-hide" id="newsTable" lay-filter="newsTable"></table>
 <div style="display: none;" id="newsToolBar">
     <c:if test="${role == 2}">
-        <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">增加</button>
-        <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="import" id="import">导入</button>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">新增</button>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="import" id="import">批量导入</button>
     </c:if>
 </div>
 <div id="newsBar" style="display: none;">
 <c:if test="${role == 1 || role == 2}">
     <a class="layui-btn layui-btn-warm layui-btn-xs layui-btn-radius" lay-event="viewNews">详情</a>
-    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="del">删除</a>
 </c:if>
 <c:if test="${role == 2}">
@@ -182,7 +182,7 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">归还时间:</label>
+            <label class="layui-form-label">预计归还时间:</label>
             <div class="layui-input-block">
                 <input type="text" name="returnTime" id="returnTime" placeholder="请输入归还时间" autocomplete="off" class="layui-input">
             </div>
@@ -289,7 +289,7 @@
         //渲染时间
         laydate.render({
             elem: '#publishTime',
-            type: 'datetime'
+            type: 'date'
             ,trigger: 'click'// 增加这个参数解决
         });
         laydate.render({
@@ -310,13 +310,13 @@
             , cols: [[   //列表数据
                 {field: 'id', title: '图书编号', align: 'center'}
                 , {field: 'name', title: '图书名称', align: 'center'}
-                , {field: 'deptName', title: '所属单位', align: 'center'}
-                // , {field: 'publishTime', title: '出版时间', align: 'center'}
+                // , {field: 'deptName', title: '所属单位', align: 'center'}
+                , {field: 'publishTime', title: '出版时间', align: 'center'}
                 , {field: 'author', title: '作者', align: 'center'}
                 , {field: 'press', title: '出版社', align: 'center'}
                 , {field: 'type', title: '图书分类', align: 'center'}
-                // , {field: 'pages', title: '页数', align: 'center'}
-                // , {field: 'price', title: '价格', align: 'center'}
+                , {field: 'pages', title: '页数', align: 'center'}
+                , {field: 'price', title: '价格', align: 'center'}
                 , {field: 'status', title: '借阅状态', align: 'center',templet: function (d) {
                         return d.status == '1' ? '空闲' : '借出中';
                     }}
@@ -418,8 +418,8 @@
                         tableIns.reload();
                     })
                 });
-            } else if (layEvent === 'edit') { //编辑
-                //编辑，打开修改界面
+            } else if (layEvent === 'edit') { //修改
+                //修改，打开修改界面
                 openUpdateNews(data);
             } else if (layEvent === 'viewNews') {//查看
                 viewNews(data);
@@ -442,7 +442,7 @@
         var url;
         var mainIndex;
 
-        //打开添加页面
+        //打开添加框
         function openAddNews() {
             mainIndex = layer.open({
                 type: 1,

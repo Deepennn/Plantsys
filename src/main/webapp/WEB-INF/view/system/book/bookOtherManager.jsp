@@ -77,7 +77,7 @@
 <div style="display: none;padding: 20px" id="borrowDiv">
     <form class="layui-form" lay-filter="dataFrm1" id="dataFrm1" style="margin-right: 20px">
         <div class="layui-form-item">
-            <label class="layui-form-label">名称:</label>
+            <label class="layui-form-label">图书名称:</label>
             <div class="layui-input-block">
                 <input type="text" name="bookId" id="bookId" style="display: none;">
                 <input type="text" name="name" placeholder="请输入图书名称" disabled autocomplete="off" class="layui-input">
@@ -85,7 +85,7 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">申请人:</label>
+            <label class="layui-form-label">申请人名称:</label>
             <div class="layui-input-block">
                 <input type="text" name="userName" id="userName" placeholder="请输入申请人" autocomplete="off" class="layui-input">
             </div>
