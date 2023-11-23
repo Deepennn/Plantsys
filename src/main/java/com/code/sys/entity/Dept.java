@@ -6,10 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
 /**
- * <p>
- * 单位表
- * </p>
- *
  * @author 
  * @since 2023-11-17
  */

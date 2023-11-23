@@ -6,9 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
 /**
- * <p>
  * 图书借阅表
- * </p>
  *
  * @author
  * @since 2023-11-18

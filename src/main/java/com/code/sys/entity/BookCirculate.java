@@ -7,9 +7,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
 /**
- * <p>
- * 图书流通表
- * </p>
  *
  * @author
  * @since 2023-11-18

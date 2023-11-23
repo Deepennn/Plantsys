@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- */
 public class TreeNode {
+    // 节点ID
     private Integer id;
+    // 节点的父节点
     @JsonProperty("parentId")
     private Integer pid;
 
@@ -18,10 +17,10 @@ public class TreeNode {
     private String href;
     private Boolean spread;
     private String target;
-
+    // 节点的子节点
     private List<TreeNode> children = new ArrayList<>();
 
-    //复选树的必要属性
+    // 节点是否被选中
     private String checkArr = "0";//选中就是1
 
     /**

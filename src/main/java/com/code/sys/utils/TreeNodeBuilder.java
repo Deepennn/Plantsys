@@ -3,10 +3,7 @@ package com.code.sys.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * 2020/2/14 17:19
- */
+
 public class TreeNodeBuilder {
         /**
          * 把简单的集合转成有层级关系的集合

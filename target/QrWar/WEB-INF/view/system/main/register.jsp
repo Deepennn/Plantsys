@@ -56,7 +56,7 @@
 		<div class="layui-form-item" style="margin-top: 20px">
 			<input type="hidden" name="img" id="img">
 			<img  id="mobileCoverImg" class="originalImg"  style="height: 50px;min-width: 50px;"/>
-			<button type="button" class="layui-btn" id="mobileTest1" style="margin-top: -12px">
+			<button type="button" class="layui-btn" id="uploadImage" style="margin-top: -12px">
 				<i class="layui-icon">&#xe67c;</i>上传
 			</button>
 		</div>
@@ -85,15 +85,15 @@
 	    })
 
 		upload.render({
-			elem: '#mobileTest1',
+			elem: '#uploadImage',
 			url: '${alfred}/file/uploadFile.action',
-			method: "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
+			method: "post",
 			acceptMime: 'images/*',
 			field: "mf",
 			done: function (res, index, upload) {
 				console.log(res.data)
 				$('#mobileCoverImg').attr('src', "/file/downloadFile.action?path=" + res.data.src);
-				$('#img').val(res.data.src);
+				$('#img').val(res.data.src);/*给用户记录img的值*/
 			}
 		});
 

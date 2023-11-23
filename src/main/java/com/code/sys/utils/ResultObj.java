@@ -2,9 +2,6 @@ package com.code.sys.utils;
 
 import com.code.sys.constant.SysConstant;
 
-/**
- *
- */
 public class ResultObj {
     private Integer code;
     private String msg;
@@ -15,7 +12,7 @@ public class ResultObj {
     public static final ResultObj OPERATE_SUCCESS = new ResultObj(SysConstant.CODE_SUCCESS,SysConstant.OPERATE_SUCCESS);
     public static final ResultObj OPERATE_ERRO = new ResultObj(SysConstant.CODE_ERROR,SysConstant.OPERATE_ERRO);
     /**
-     * 添加
+     * 增加
      */
     public static final ResultObj ADD_SUCCESS = new ResultObj(SysConstant.CODE_SUCCESS,SysConstant.ADD_SUCCESS);
     public static final ResultObj ADD_ERROR = new ResultObj(SysConstant.CODE_ERROR,SysConstant.ADD_ERROR);

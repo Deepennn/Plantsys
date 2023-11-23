@@ -4,22 +4,21 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-/**
- *
- */
+
 @TableName("sys_menu")
 public class Menu {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-
+    // 父菜单ID字段
     private Integer pid;
 
     private String title;
 
     private String href;
-
+    // 展开状态字段
     private Integer spread;
 
+    // 链接的打开目标
     private String target;
 
     private String icon;

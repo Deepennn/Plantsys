@@ -7,11 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-/**
- * web的工具类
- * @author bjpowernode
- *
- */
 public class WebUtils {
 	
 	public static ServletRequestAttributes getServletRequestAttributes() {
