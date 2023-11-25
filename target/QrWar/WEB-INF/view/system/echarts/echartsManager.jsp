@@ -25,7 +25,7 @@
             <div class="layui-card-body">
                 <div class="layui-row layui-col-space5">
                     <div class="layui-col-xs9 layui-col-md9 top-panel-number">
-                        ${totalNum}
+                        ${totalNum+addNum}
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
     </div>
     <div class="layui-col-xs12 layui-col-md3" style="background-color: #c0c4cc">
         <div class="layui-card top-panel">
-            <div class="layui-card-header">本单位借入图书数量</div>
+            <div class="layui-card-header">本单位流入图书数量</div>
             <div class="layui-card-body">
                 <div class="layui-row layui-col-space5">
                     <div class="layui-col-xs9 layui-col-md9 top-panel-number">

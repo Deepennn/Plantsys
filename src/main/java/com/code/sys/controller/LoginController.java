@@ -99,7 +99,6 @@ public class LoginController {
                 this.userService.updateById(user);
                 //放入到session
                 WebUtils.getHttpSession().setAttribute("user", user);
-                WebUtils.getHttpSession().setAttribute("role", user.getRid());
                 return "system/main/index";
             } else {
                 model.addAttribute("error", SysConstant.USER_LOGIN_ERROR_MSG);

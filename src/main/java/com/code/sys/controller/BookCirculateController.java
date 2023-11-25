@@ -1,6 +1,7 @@
 package com.code.sys.controller;
 
 import cn.hutool.core.date.DateUtil;
+import com.code.sys.entity.BookBorrow;
 import com.code.sys.entity.User;
 import com.code.sys.entity.Book;
 import com.code.sys.service.BookService;
@@ -67,13 +68,20 @@ public class BookCirculateController {
     @RequestMapping("save")
     public ResultObj save(BookCirculate bookCirculate){
         try{
+
+
             User user = (User) WebUtils.getHttpSession().getAttribute("user");
             user = userService.getById(user);
             Book book = bookService.getById(bookCirculate.getBookId());
+            // 流通拒绝
+            if(book.getStatus()==2){
+                return new ResultObj(0,"该书已被借阅或流出");
+            }
+            book.setStatus(2);
+            bookService.updateById(book);
+
             bookCirculate.setDeptId(book.getDeptId());
             bookCirculate.setCirculateDeptId(user.getDeptId());
-//            bookCirculate.setUserName(user.getRealname());
-//            bookCirculate.setPhone(user.getPhone());
             bookCirculate.setCirculateTime(DateUtil.now());
             bookCirculate.setCirculateStatus(0);
             this.bookCirculateService.saveOrUpdate(bookCirculate);
@@ -94,8 +102,15 @@ public class BookCirculateController {
             // 归还申请
             if (2 == circulate.getCirculateStatus()) {
                 circulate.setReturnTime(DateUtil.now());
+                BookCirculate bookCirculate=bookCirculateService.getById(circulate.getId());
+                Book book=bookService.getById(bookCirculate.getBookId());
+                if(null !=book){
+                    book.setStatus(1);
+                    bookService.updateById(book);
+                }else {
+                    return new ResultObj(-1,"bood_id为空");
+                }
             }
-
             this.bookCirculateService.updateById(circulate);
             return ResultObj.OPERATE_SUCCESS;
         }catch (Exception e){

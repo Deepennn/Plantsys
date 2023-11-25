@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>图书管理</title>
+    <title>流通管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -69,11 +69,11 @@
 <div id="newsBar" style="display: none;">
 <c:if test="${role == 2}">
     <a class="layui-btn layui-btn-warm layui-btn-xs layui-btn-radius" lay-event="viewNews">详情</a>
-    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="borrow">流通</a>
+    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="circulate">流通</a>
 </c:if>
 </div>
 
-<!-- 借阅图书的弹出层-->
+<!-- 流通图书的弹出层-->
 <div style="display: none;padding: 20px" id="borrowDiv">
     <form class="layui-form" lay-filter="dataFrm1" id="dataFrm1" style="margin-right: 20px">
         <div class="layui-form-item">
@@ -124,7 +124,7 @@
     </form>
 </div>
 
-<%--增加图书的div--%>
+<%--查看图书的div--%>
 <div id="viewNewsDiv" style="padding: 10px;display: none">
     <form class="layui-form" lay-filter="dataFrm2" id="dataFrm2" style="margin-right: 20px">
         <div class="layui-form-item">
@@ -221,11 +221,11 @@
                 , {field: 'author', title: '作者', align: 'center'}
                 , {field: 'press', title: '出版社', align: 'center'}
                 , {field: 'type', title: '图书分类', align: 'center'}
-                , {field: 'pages', title: '页数', align: 'center'}
-                , {field: 'price', title: '价格', align: 'center'}
-                // , {field: 'status', title: '借阅状态', align: 'center',templet: function (d) {
-                //         return d.status == '1' ? '空闲' : '借阅中';
-                //     }}
+                // , {field: 'pages', title: '页数', align: 'center'}
+                // , {field: 'price', title: '价格', align: 'center'}
+                , {field: 'status', title: '借出状态', align: 'center',templet: function (d) {
+                        return d.status == '1' ? '空闲' : '借出中';
+                    }}
                 // , {field: 'status', title: '开放状态', align: 'center',templet: function (d) {
                 //         return d.isOpen == '1' ? '开放' : '隐藏';
                 //     }}
@@ -301,63 +301,26 @@
         table.on('tool(newsTable)', function (obj) {
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-            if (layEvent === 'del') { //删除
-                layer.confirm('真的删除【' + data.name + '】这个图书么？', function (index) {
-                    //向服务端发送删除指令
-                    $.post("/book/delete.action", {id: data.id}, function (res) {
-                        layer.msg(res.msg);
-                        //刷新数据表格
-                        tableIns.reload();
-                    })
-                });
-            } else if (layEvent === 'edit') { //编辑
-                //编辑，打开修改界面
-                openUpdateNews(data);
-            } else if (layEvent === 'viewNews') {//查看
+            if (layEvent === 'viewNews') {//详情
                 viewNews(data);
-            } else if (layEvent === 'borrow') {//查看
-                openBorrow(data);
+            } else if (layEvent === 'circulate') {//流通
+                if(data.status===2){
+                    layer.msg("流通失败");
+                }else {
+                    openCirculate(data);
+                }
             }
         });
 
         var url;
         var mainIndex;
 
-        //打开添加页面
-        function openAddNews() {
-            mainIndex = layer.open({
-                type: 1,
-                title: '添加图书信息',
-                content: $("#saveOrUpdateDiv"),
-                area: ['700px', '540px'],
-                success: function (index) {
-                    //清空表单数据
-                    $("#dataFrm")[0].reset();
-                    url = "/book/save.action";
-                }
-            });
-        }
 
-        //打开修改页面
-        function openUpdateNews(data) {
+        //打开流通页面
+        function openCirculate(data) {
             mainIndex = layer.open({
                 type: 1,
-                title: '修改图书信息',
-                content: $("#saveOrUpdateDiv"),
-                area: ['700px', '540px'],
-                success: function (index) {
-                    form.val("dataFrm", data);
-                    $('#mobileCoverImg').attr('src', "/file/downloadFile.action?path=" + data.img);
-                    url = "/book/save.action";
-                }
-            });
-        }
-
-        //打开修改页面
-        function openBorrow(data) {
-            mainIndex = layer.open({
-                type: 1,
-                title: '借阅图书',
+                title: '申请流入图书',
                 content: $("#borrowDiv"),
                 area: ['700px', '540px'],
                 success: function (index) {

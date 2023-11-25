@@ -47,7 +47,7 @@ public class BookController {
             queryWrapper.eq("dept_id", user.getDeptId());
         }
         if (user.getRid() == 3) {
-            queryWrapper.eq("status", 1);
+//            queryWrapper.eq("status", 1);
             queryWrapper.eq("is_open", 1);
         }
         queryWrapper.like(null != queryVo.getId(), "id", queryVo.getId());

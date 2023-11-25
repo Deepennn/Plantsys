@@ -115,9 +115,9 @@
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if (layEvent === 'agree1') { //流通审核
                 updateStatus(data.id, 1);
-            } else if (layEvent === 'refuse1') { //流通审核
+            } else if (layEvent === 'refuse1') { //流通 审核
                 updateStatus(data.id, 2);
-            } else if (layEvent === 'agree3') { //归还审核
+            } else if (layEvent === 'agree3') { //归还 审核
                 updateStatus(data.id, 2);
             }
         });

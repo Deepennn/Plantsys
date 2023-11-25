@@ -73,7 +73,7 @@ public class BookBorrowController {
             user = userService.getById(user);
             Book book = bookService.getById(bookBorrow.getBookId());
             if (book.getStatus() == 2) {
-                return new ResultObj(0, "该图书已被借阅");
+                return new ResultObj(0, "该图书已被借出");
             }
             book.setStatus(2);
             bookService.updateById(book);

@@ -318,7 +318,7 @@
                 , {field: 'pages', title: '页数', align: 'center'}
                 , {field: 'price', title: '价格', align: 'center'}
                 , {field: 'status', title: '借阅状态', align: 'center',templet: function (d) {
-                        return d.status == '1' ? '空闲' : '借阅中';
+                        return d.status == '1' ? '空闲' : '借出中';
                     }}
                 , {field: 'status', title: '开放状态', align: 'center',templet: function (d) {
                         return d.isOpen == '1' ? '开放' : '隐藏';
@@ -424,7 +424,11 @@
             } else if (layEvent === 'viewNews') {//查看
                 viewNews(data);
             } else if (layEvent === 'borrow') {//查看
-                openBorrow(data);
+                if(data.status===2){
+                    layer.msg("借阅失败")
+                }else {
+                    openBorrow(data);
+                }
             } else if (layEvent === 'updateOpen') {
                 let isOpen = data.isOpen == 1 ? 0 : 1;
                 $.post("/book/update.action", {id: data.id, isOpen: isOpen}, function (res) {
