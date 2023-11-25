@@ -3,6 +3,8 @@ package com.code.sys.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +13,7 @@ import java.io.Serializable;
  * @author
  * @since 2023-11-18
  */
+@Data
 @TableName("sys_book_borrow")
 public class BookBorrow implements Serializable {
 
@@ -73,111 +76,6 @@ public class BookBorrow implements Serializable {
      */
     private Integer returnStatus;
     private Integer staffId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getBorrowTime() {
-        return borrowTime;
-    }
-
-    public void setBorrowTime(String borrowTime) {
-        this.borrowTime = borrowTime;
-    }
-
-    public String getReturnTime() {
-        return returnTime;
-    }
-
-    public void setReturnTime(String returnTime) {
-        this.returnTime = returnTime;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Integer getBorrowStatus() {
-        return borrowStatus;
-    }
-
-    public void setBorrowStatus(Integer borrowStatus) {
-        this.borrowStatus = borrowStatus;
-    }
-
-    public Integer getReturnStatus() {
-        return returnStatus;
-    }
-
-    public void setReturnStatus(Integer returnStatus) {
-        this.returnStatus = returnStatus;
-    }
-
-    public Integer getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(Integer staffId) {
-        this.staffId = staffId;
-    }
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
     @Override
     public String toString() {
         return "BookBorrow{" +

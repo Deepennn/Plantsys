@@ -169,32 +169,6 @@ public class UserController {
     }
 
     /**
-     * 加载用户管理的分配角色的数据
-     * @param userVo
-     * @return
-     */
-    @RequestMapping("initUserRole")
-    public DataGridView initUserRole(UserVo userVo){
-        return this.userService.queryUserRole(userVo.getId());
-    }
-
-    /**
-     * 保存用户和角色的关系
-     * @param userVo
-     * @return
-     */
-    @RequestMapping("saveUserRole")
-    public ResultObj saveUserRole(UserVo userVo){
-        try {
-            this.userService.saveUserRole(userVo);
-            return ResultObj.DISPATCH_SUCCESS;
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResultObj.DISPATCH_ERROR;
-        }
-    }
-
-    /**
      * 获取用户信息
      * @return
      */
@@ -211,5 +185,4 @@ public class UserController {
             return new DataGridView();
         }
     }
-
 }

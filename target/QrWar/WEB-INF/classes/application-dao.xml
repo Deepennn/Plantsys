@@ -10,22 +10,6 @@
     <bean id="placeholderConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
         <property name="locations" value="classpath:jdbc.properties"/>
     </bean>
-
-    <!--声明dataSource 使用c3p0数据源-->
-    <bean id="dataSource1" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <!--注入连接属性-->
-        <property name="driverClass" value="${jdbc.driverClass}"/>
-        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
-        <property name="user" value="${jdbc.user}"/>
-        <property name="password" value="${jdbc.password}"/>
-        <!--初始化连接池大小-->
-        <property name="initialPoolSize" value="5"/>
-        <!--设置最大连接数-->
-        <property name="maxPoolSize" value="50"/>
-        <!--设置最小的连接数-->
-        <property name="minPoolSize" value="10"/>
-    </bean>
-
     <!--使用druid数据源-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init">
         <!--注入连接属性-->

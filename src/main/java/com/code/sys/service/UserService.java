@@ -35,16 +35,5 @@ public interface UserService extends IService<User> {
      */
     void updateUserPwd(UserVo userVo);
 
-    /**
-     * 加载用户管理分配角色的数据
-     * @param userid
-     * @return
-     */
-    DataGridView queryUserRole(Integer userid);
 
-    /**
-     * 保存用户和角色的关系
-     * @param userVo
-     */
-    void saveUserRole(UserVo userVo);
 }

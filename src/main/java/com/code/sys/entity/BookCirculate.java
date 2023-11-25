@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +13,7 @@ import java.io.Serializable;
  * @author
  * @since 2023-11-18
  */
+@Data
 @TableName("sys_book_circulate")
 public class BookCirculate implements Serializable {
 
@@ -82,126 +85,6 @@ public class BookCirculate implements Serializable {
 
     @TableField(exist = false)
     private String deptName;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
-    }
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
-    public Integer getCirculateDeptId() {
-        return circulateDeptId;
-    }
-
-    public void setCirculateDeptId(Integer circulateDeptId) {
-        this.circulateDeptId = circulateDeptId;
-    }
-
-    public String getCirculateTime() {
-        return circulateTime;
-    }
-
-    public void setCirculateTime(String circulateTime) {
-        this.circulateTime = circulateTime;
-    }
-
-    public String getReturnTime() {
-        return returnTime;
-    }
-
-    public void setReturnTime(String returnTime) {
-        this.returnTime = returnTime;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Integer getCirculateStatus() {
-        return circulateStatus;
-    }
-
-    public void setCirculateStatus(Integer circulateStatus) {
-        this.circulateStatus = circulateStatus;
-    }
-
-    public Integer getReturnStatus() {
-        return returnStatus;
-    }
-
-    public void setReturnStatus(Integer returnStatus) {
-        this.returnStatus = returnStatus;
-    }
-
-    public String getBookName() {
-        return bookName;
-    }
-
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
-
-    public String getCirculateDeptName() {
-        return circulateDeptName;
-    }
-
-    public void setCirculateDeptName(String circulateDeptName) {
-        this.circulateDeptName = circulateDeptName;
-    }
-
-    public String getDeptName() {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
-    }
 
     @Override
     public String toString() {
