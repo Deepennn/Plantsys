@@ -19,7 +19,7 @@
 <body class="childrenBody">
 
 <!-- 搜索条件开始 -->
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
     <legend>查询条件</legend>
 </fieldset>
 <form class="layui-form" method="post" id="searchFrm">
@@ -74,8 +74,8 @@
 </div>
 <div id="newsBar" style="display: none;">
 <c:if test="${role == 1 || role == 2}">
-    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-warm layui-btn-xs layui-btn-radius" lay-event="viewNews">详情</a>
+    <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="del">删除</a>
 </c:if>
 <c:if test="${role == 2}">
@@ -216,7 +216,7 @@
     </form>
 </div>
 
-<%--查看新闻的div--%>
+<%--添加div--%>
 <div id="viewNewsDiv" style="padding: 10px;display: none">
     <form class="layui-form" lay-filter="dataFrm2" id="dataFrm2" style="margin-right: 20px">
         <div class="layui-form-item">
@@ -304,19 +304,19 @@
             , url: '/book/findPage.action' //数据接口
             , title: '图书信息'//数据导出来的标题
             , toolbar: "#newsToolBar"   //表格的工具条
-            , height: 'full-190'
-            , cellMinWidth: 100 //设置列的最小默认宽度
+            , height: 'full-175'
+            , cellMinWidth: 120 //设置列的最小默认宽度
             , page: true  //是否启用分页
             , cols: [[   //列表数据
-                {field: 'id', title: '编号', align: 'center'}
+                {field: 'id', title: '图书编号', align: 'center'}
                 , {field: 'name', title: '图书名称', align: 'center'}
                 , {field: 'deptName', title: '所属单位', align: 'center'}
-                , {field: 'publishTime', title: '出版时间', align: 'center'}
+                // , {field: 'publishTime', title: '出版时间', align: 'center'}
                 , {field: 'author', title: '作者', align: 'center'}
                 , {field: 'press', title: '出版社', align: 'center'}
                 , {field: 'type', title: '图书分类', align: 'center'}
-                , {field: 'pages', title: '页数', align: 'center'}
-                , {field: 'price', title: '价格', align: 'center'}
+                // , {field: 'pages', title: '页数', align: 'center'}
+                // , {field: 'price', title: '价格', align: 'center'}
                 , {field: 'status', title: '借阅状态', align: 'center',templet: function (d) {
                         return d.status == '1' ? '空闲' : '借出中';
                     }}

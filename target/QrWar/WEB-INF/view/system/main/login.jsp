@@ -16,10 +16,10 @@
 </head>
 <body class="loginBody">
 <br>
-<h1 align="center"  style="color:LightSteelBlue ; font-size: 50px">图书借阅管理系统</h1>
+<h1 align="center"  style="color:LightSteelBlue ; font-size: 65px;font-family: 方正粗黑宋简体,微软雅黑;">图 书 借 阅 管 理 系 统</h1>
 	<form class="layui-form" id="loginFrm" method="post" action="/login/login.action" style="height: 525px;width: 300px;">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-			<legend>登录</legend>
+			<legend>请登录</legend>
 		</fieldset>
 		<label class="layui-form-label" for="rid">请选择身份</label>
 		<div class="layui-form-item input-item">

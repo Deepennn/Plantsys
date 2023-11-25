@@ -185,7 +185,7 @@
             , title: '单位信息'//数据导出来的标题
             , toolbar: "#newsToolBar"   //表格的工具条
             , height: 'full-190'
-            , cellMinWidth: 100 //设置列的最小默认宽度
+            , cellMinWidth: 120 //设置列的最小默认宽度
             , page: true  //是否启用分页
             , cols: [[   //列表数据
                 , {field: 'id', title: 'ID', align: 'center'}
