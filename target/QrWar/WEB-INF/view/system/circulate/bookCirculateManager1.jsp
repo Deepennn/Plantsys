@@ -64,8 +64,8 @@
             , cols: [[   //列表数据
                 {field: 'id', title: 'ID', align: 'center'}
                 , {field: 'bookName', title: '图书名称', align: 'center'}
-                , {field: 'deptName', title: '图书所属单位', align: 'center'}
-                , {field: 'circulateDeptName', title: '流通单位', align: 'center'}
+                , {field: 'deptName', title: '所属单位', align: 'center'}
+                , {field: 'circulateDeptName', title: '对方单位', align: 'center'}
                 , {field: 'circulateTime', title: '流通时间', align: 'center'}
                 , {field: 'returnTime', title: '归还时间', align: 'center'}
                 , {field: 'reason', title: '流通理由', align: 'center'}

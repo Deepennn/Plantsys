@@ -67,18 +67,18 @@
 <!-- 数据表格开始 -->
 <table class="layui-hide" id="newsTable" lay-filter="newsTable"></table>
 <div style="display: none;" id="newsToolBar">
-    <c:if test="${type == 2}">
+    <c:if test="${role == 2}">
         <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">增加</button>
         <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="import" id="import">导入</button>
     </c:if>
 </div>
 <div id="newsBar" style="display: none;">
-<c:if test="${type == 1 || type == 2}">
+<c:if test="${role == 1 || role == 2}">
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-warm layui-btn-xs layui-btn-radius" lay-event="viewNews">详情</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="del">删除</a>
 </c:if>
-<c:if test="${type == 2}">
+<c:if test="${role == 2}">
     {{# if(d.isOpen==0){  }}
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="updateOpen">开放</a>
     {{#  }}}
@@ -86,7 +86,7 @@
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="updateOpen">隐藏</a>
     {{#  }}}
 </c:if>
-<c:if test="${type == 3}">
+<c:if test="${role == 3}">
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="borrow">借阅</a>
 </c:if>
 </div>

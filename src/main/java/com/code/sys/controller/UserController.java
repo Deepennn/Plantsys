@@ -57,6 +57,10 @@ public class UserController {
                 return item;
             }).collect(Collectors.toList());
         }
+        // 去掉管理员
+        if (data != null && data.get(0).getRid() == 1) {
+            data.remove(0);
+        }
         return new DataGridView(page.getTotal(),data);
     }
     /**

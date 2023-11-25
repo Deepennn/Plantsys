@@ -67,7 +67,7 @@
 <!-- 数据表格开始 -->
 <table class="layui-hide" id="newsTable" lay-filter="newsTable"></table>
 <div id="newsBar" style="display: none;">
-<c:if test="${type == 2}">
+<c:if test="${role == 2}">
     <a class="layui-btn layui-btn-warm layui-btn-xs layui-btn-radius" lay-event="viewNews">详情</a>
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="borrow">流通</a>
 </c:if>
@@ -399,11 +399,6 @@
 
 </script>
 <style type="text/css">
-    .layui-table-cell{
-        text-align:center;
-        height: auto;
-        white-space: normal;
-    }
     .layui-table img{
         max-width:100%
     }

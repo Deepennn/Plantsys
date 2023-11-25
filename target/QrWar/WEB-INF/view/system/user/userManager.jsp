@@ -54,7 +54,7 @@
 </div>
 <div id="userBar" style="display: none;">
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="del">删除</a>
+    <a id="delebtn" class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="del">删除</a>
 </div>
 
 <!-- 添加和修改的弹出层-->
@@ -164,7 +164,7 @@
                 , {field: 'email', title: '邮箱', align: 'center', width: '130'}
                 , {field: 'deptName', title: '所属单位', align: 'center', width: '130'}
                 , {
-                    field: 'type', title: '用户身份', align: 'center', width: '130', templet: function (d) {
+                    field: 'role', title: '用户身份', align: 'center', width: '130', templet: function (d) {
                         if (d.rid == 1) {
                             return '管理员';
                         } else if (d.rid == 2) {
@@ -224,6 +224,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if (layEvent === 'del') { //删除
+                if(data.rid===1){
+                    $('#delebtn').hide();
+                }
                 layer.confirm('真的删除【' + data.realname + '】这个用户么？', function (index) {
                     //向服务端发送删除指令
                     $.post("/user/delete.action", {id: data.id}, function (res) {
@@ -234,7 +237,7 @@
                 });
             } else if (layEvent === 'edit') { //编辑
                 //编辑，打开修改界面
-                if(data.type===3){
+                if(data.rid===3 || data.rid===1){
                     $('#dept').prop('disabled', true);
                 }else{
                     $('#dept').prop('disabled', false);

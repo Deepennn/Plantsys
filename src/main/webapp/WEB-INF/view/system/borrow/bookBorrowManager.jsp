@@ -21,12 +21,12 @@
 <!-- 数据表格开始 -->
 <table class="layui-hide" id="newsTable" lay-filter="newsTable"></table>
 <div id="newsBar" style="display: none;">
-<c:if test="${type == 3}">
+<c:if test="${role == 3}">
     {{# if(d.borrowStatus==1){  }}
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="return">归还图书</a>
     {{#  }}}
 </c:if>
-<c:if test="${type == 2}">
+<c:if test="${role == 2}">
     {{# if(d.borrowStatus==0){  }}
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="agree1">同意</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="refuse1">拒绝</a>
@@ -140,11 +140,6 @@
 
 </script>
 <style type="text/css">
-    .layui-table-cell{
-        text-align:center;
-        height: auto;
-        white-space: normal;
-    }
     .layui-table img{
         max-width:100%
     }

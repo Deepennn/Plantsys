@@ -61,8 +61,8 @@
             , cols: [[   //列表数据
                 {field: 'id', title: 'ID', align: 'center'}
                 , {field: 'bookName', title: '图书名称', align: 'center'}
-                , {field: 'deptName', title: '图书所属单位', align: 'center'}
-                , {field: 'circulateDeptName', title: '流通单位', align: 'center'}
+                , {field: 'deptName', title: '所属单位', align: 'center'}
+                , {field: 'circulateDeptName', title: '我方单位', align: 'center'}
                 , {field: 'circulateTime', title: '流通时间', align: 'center'}
                 , {field: 'returnTime', title: '归还时间', align: 'center'}
                 , {field: 'reason', title: '流通理由', align: 'center'}
@@ -93,6 +93,7 @@
                 }
             }
         });
+        table.resize('newsTable');
 
         //模糊查询
         $("#doSearch").click(function () {
@@ -125,11 +126,6 @@
 
 </script>
 <style type="text/css">
-    .layui-table-cell{
-        text-align:center;
-        height: auto;
-        white-space: normal;
-    }
     .layui-table img{
         max-width:100%
     }
