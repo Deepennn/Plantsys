@@ -71,11 +71,6 @@ public class BookBorrow implements Serializable {
      * 借阅审核状态
      */
     private Integer borrowStatus;
-    /**
-     * 归还审核状态
-     */
-    private Integer returnStatus;
-    private Integer staffId;
     @Override
     public String toString() {
         return "BookBorrow{" +

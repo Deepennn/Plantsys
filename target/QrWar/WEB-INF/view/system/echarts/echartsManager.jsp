@@ -162,7 +162,7 @@
                 },
                 series: [
                     {
-                        name: '按年统计',
+                        name: '按月统计',
                         barWidth: 40, // 柱子宽度
                         data: numData,
                         type: 'line',

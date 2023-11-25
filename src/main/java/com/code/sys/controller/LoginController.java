@@ -13,8 +13,11 @@ import com.code.sys.utils.ResultObj;
 import com.code.sys.utils.WebUtils;
 import com.code.sys.vo.UserVo;
 import nl.captcha.Captcha;
+import nl.captcha.backgrounds.FlatColorBackgroundProducer;
 import nl.captcha.backgrounds.GradiatedBackgroundProducer;
+import nl.captcha.backgrounds.SquigglesBackgroundProducer;
 import nl.captcha.gimpy.RippleGimpyRenderer;
+import nl.captcha.noise.CurvedLineNoiseProducer;
 import nl.captcha.noise.StraightLineNoiseProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
@@ -114,9 +118,10 @@ public class LoginController {
     public void captcha(HttpServletRequest request, HttpServletResponse response)throws IOException {
         // 生成验证码
         Captcha captcha = new Captcha.Builder(150, 50)
-                .addNoise(new StraightLineNoiseProducer())
+                .addNoise(new CurvedLineNoiseProducer())
                 .addText()
-                .addBackground(new GradiatedBackgroundProducer())  // 添加背景
+                .addBackground(new FlatColorBackgroundProducer(Color.CYAN))  // 添加背景
+//                .addBackground(new SquigglesBackgroundProducer())
                 .build();
 
         // 将验证码存储在Session中

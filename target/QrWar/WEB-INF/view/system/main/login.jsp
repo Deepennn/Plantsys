@@ -15,14 +15,14 @@
 	<link rel="stylesheet" href="/resources/css/public.css" media="all" />
 </head>
 <body class="loginBody">
-<br><br>
-<h1 align="center"  style="color:LightSteelBlue ; font-size: 60px">图书管理系统</h1>
-	<form class="layui-form" id="loginFrm" method="post" action="/login/login.action" style="height: 460px;width: 300px;">
+<br>
+<h1 align="center"  style="color:LightSteelBlue ; font-size: 50px">图书借阅管理系统</h1>
+	<form class="layui-form" id="loginFrm" method="post" action="/login/login.action" style="height: 525px;width: 300px;">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 			<legend>登录</legend>
 		</fieldset>
+		<label class="layui-form-label" for="rid">请选择身份</label>
 		<div class="layui-form-item input-item">
-			<label>身份</label>
 			<select name="rid">
 				<option value="" selected="selected">请选择身份</option>
 				<option value="1">管理员</option>
@@ -43,8 +43,10 @@
 		<div class="layui-form-item input-item">
 			<label for="captcha">验证码</label>
 			<input type="text" name="captcha" id="captcha" required lay-verify="required" placeholder="请输入下方验证码" class="layui-input">
-			<img id="captchaImage" src="/login/captcha.action?Math.random()" onclick="refreshCaptcha()">
-			<p onclick="refreshCaptcha()">看不清？点击刷新</p>
+			<div style="display: flex;margin-top: 6px;">
+				<img style="display: inline-block" id="captchaImage" src="/login/captcha.action?Math.random()" onclick="refreshCaptcha()">
+				<p style="display: inline-block;margin-left: 5px;margin-top: 8px;" onclick="refreshCaptcha()">看不清？点击刷新</p>
+			</div>
 		</div>
 		<div class="layui-form-item layui-row" style="text-align: center;color: red;">
 			${error}
