@@ -527,16 +527,9 @@
 
 </script>
 <style type="text/css">
-    .layui-table-cell{
-        text-align:center;
-        height: auto;
-        white-space: normal;
-    }
     .layui-table img{
         max-width:100%
     }
-
-
 </style>
 </body>
 </html>

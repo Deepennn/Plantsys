@@ -40,7 +40,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             queryWrapper.eq("loginname", userVo.getLoginname());
             //明文生成密文
             queryWrapper.eq("pwd", DigestUtils.md5DigestAsHex(userVo.getPwd().getBytes()));
-            queryWrapper.eq(null != userVo.getType(), "type", userVo.getType());
+            queryWrapper.eq(null != userVo.getRid(), "rid", userVo.getRid());
             return userMapper.selectOne(queryWrapper);
         } catch (Exception e) {
             e.printStackTrace();

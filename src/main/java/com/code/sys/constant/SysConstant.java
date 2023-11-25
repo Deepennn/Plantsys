@@ -19,9 +19,9 @@ public interface SysConstant {
     /**
      * 用户类型
      */
-    Integer USER_TYPE_SUPER = 1;
-    Integer USER_TYPE_NORMAL = 2;
-    Integer USER_TYPE_USER = 3;
+    Integer USER_ROLE_ADMIN = 1;
+    Integer USER_ROLE_STAFF = 2;
+    Integer USER_ROLE_READER = 3;
 
 
     /**

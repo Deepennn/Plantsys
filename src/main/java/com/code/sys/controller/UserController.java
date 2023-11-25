@@ -94,7 +94,6 @@ public class UserController {
             }
 //            User user=this.userService.getById(userVo.getId());
             userVo.setRid(2);
-            userVo.setType(2);
             this.userService.saveOrUpdate(userVo);
             return ResultObj.OPERATE_SUCCESS;
         } catch (Exception e) {

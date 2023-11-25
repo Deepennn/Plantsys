@@ -51,13 +51,14 @@ public class BookBorrowController {
         Integer deptId = null;
 
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        if (user.getType() == 2) {
+        if (user.getRid() == 2) {
             deptId = user.getDeptId();
-        } else if (user.getType() == 3) {
+        } else if (user.getRid() == 3) {
             userId = user.getId();
         }
 
         List<Book> data = this.bookBorrowService.findPage(userId, deptId);
+        System.out.println(data.get(0).getBorrowStatus());
         return new DataGridView(page.getTotal(),data);
     }
 

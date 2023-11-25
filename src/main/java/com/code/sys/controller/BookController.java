@@ -43,10 +43,10 @@ public class BookController {
 
         Page<Object> page = PageHelper.startPage(queryVo.getPage(), queryVo.getLimit());
         QueryWrapper<Book> queryWrapper = new QueryWrapper<>();
-        if (user.getType() == 2) {
+        if (user.getRid() == 2) {
             queryWrapper.eq("dept_id", user.getDeptId());
         }
-        if (user.getType() == 3) {
+        if (user.getRid() == 3) {
             queryWrapper.eq("status", 1);
             queryWrapper.eq("is_open", 1);
         }
@@ -74,7 +74,7 @@ public class BookController {
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
         Page<Object> page = PageHelper.startPage(queryVo.getPage(), queryVo.getLimit());
         QueryWrapper<Book> queryWrapper = new QueryWrapper<>();
-        if (user.getType() == 2) {
+        if (user.getRid()== 2) {
             queryWrapper.ne("dept_id", user.getDeptId());
             queryWrapper.eq("is_open", 1);
         }

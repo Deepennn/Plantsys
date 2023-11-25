@@ -29,7 +29,7 @@ public class MenuController {
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
         List<Menu> list = null;
         menuVo.setAvailable(SysConstant.AVAILABLE_TRUE);//只用于查询可用的
-//        if (user.getType() == SysConstant.USER_TYPE_SUPER) {
+//        if (user.getRid() == SysConstant.USER_ROLE_ADMIN) {
 //            list = menuService.queryAllMenuForList(menuVo);
 //        } else {
         list = menuService.queryMenuByUserIdForList(menuVo, user.getId());

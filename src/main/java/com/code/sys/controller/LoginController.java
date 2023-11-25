@@ -86,7 +86,7 @@ public class LoginController {
             return "system/main/login";
         }
         try {
-            if(userVo.getType() == null) {
+            if(userVo.getRid() == null) {
                 model.addAttribute("error", SysConstant.USER_LOGIN_CODE_ERROR_MSG);
                 return "system/main/login";
             }
@@ -99,6 +99,7 @@ public class LoginController {
                 this.userService.updateById(user);
                 //放入到session
                 WebUtils.getHttpSession().setAttribute("user", user);
+                WebUtils.getHttpSession().setAttribute("type", user.getRid());
                 return "system/main/index";
             } else {
                 model.addAttribute("error", SysConstant.USER_LOGIN_ERROR_MSG);
@@ -113,7 +114,7 @@ public class LoginController {
     @RequestMapping("captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response)throws IOException {
         // 生成验证码
-        Captcha captcha = new Captcha.Builder(200, 50)
+        Captcha captcha = new Captcha.Builder(150, 50)
                 .addNoise(new StraightLineNoiseProducer())
                 .addText()
                 .addBackground(new GradiatedBackgroundProducer())  // 添加背景
@@ -145,7 +146,6 @@ public class LoginController {
             model.addAttribute("error", SysConstant.USER_REGISTER_CODE_ERROR_MSG);
             return "system/main/register";
         }
-        userVo.setType(3);
         userVo.setRid(3);
         this.userService.addRegister(userVo);
         model.addAttribute("error", SysConstant.USER_REGISTER_CODE_SUCCESS_MSG);

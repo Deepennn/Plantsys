@@ -17,14 +17,13 @@
 <body class="loginBody">
 <br><br>
 <h1 align="center"  style="color:LightSteelBlue ; font-size: 60px">图书管理系统</h1>
-	<br>
-	<form class="layui-form" id="loginFrm" method="post" action="/login/login.action" style="height: 450px">
+	<form class="layui-form" id="loginFrm" method="post" action="/login/login.action" style="height: 460px;width: 300px;">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 			<legend>登录</legend>
 		</fieldset>
 		<div class="layui-form-item input-item">
 			<label>身份</label>
-			<select name="type">
+			<select name="rid">
 				<option value="" selected="selected">请选择身份</option>
 				<option value="1">管理员</option>
 				<option value="2">工作人员</option>
@@ -43,10 +42,13 @@
 		<!-- 验证码 -->
 		<div class="layui-form-item input-item">
 			<label for="captcha">验证码</label>
-			<input type="text" name="captcha" id="captcha" required lay-verify="required" placeholder="验证码" class="layui-input">
+			<input type="text" name="captcha" id="captcha" required lay-verify="required" placeholder="请输入下方验证码" class="layui-input">
 			<img id="captchaImage" src="/login/captcha.action?Math.random()" onclick="refreshCaptcha()">
+			<p onclick="refreshCaptcha()">看不清？点击刷新</p>
 		</div>
-
+		<div class="layui-form-item layui-row" style="text-align: center;color: red;">
+			${error}
+		</div>
 		<div class="layui-form-item">
 			<button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
 			<br/>
@@ -55,9 +57,6 @@
 
 		<div class="layui-form-item layui-row" style="text-align: right;color: blue;">
 			<a style="text-align: right " href="/login/toRestPwd.action">重置密码</a>
-		</div>
-		<div class="layui-form-item layui-row" style="text-align: center;color: red;">
-			${error}
 		</div>
 	</form>
 	<script type="text/javascript" src="/resources/layui/layui.js"></script>

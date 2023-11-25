@@ -51,7 +51,7 @@ public class SysController {
     @RequestMapping("toBookManager")
     public String toBookManager(Model model){
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("type", user.getType());
+        model.addAttribute("type", user.getRid());
         model.addAttribute("uid", user.getId());
         return "system/book/bookManager";
     }
@@ -63,7 +63,7 @@ public class SysController {
     @RequestMapping("toBookOtherManager")
     public String toBookOtherManager(Model model){
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("type", user.getType());
+        model.addAttribute("type", user.getRid());
         model.addAttribute("uid", user.getId());
         return "system/book/bookOtherManager";
     }
@@ -74,7 +74,7 @@ public class SysController {
     @RequestMapping("toBookCirculateManager")
     public String toBookCirculateManager(Model model){
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("type", user.getType());
+        model.addAttribute("type", user.getRid());
         model.addAttribute("uid", user.getId());
         return "system/circulate/bookCirculateManager";
     }
@@ -85,7 +85,7 @@ public class SysController {
     @RequestMapping("toBookCirculateManager1")
     public String toBookCirculateManager1(Model model){
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("type", user.getType());
+        model.addAttribute("type", user.getRid());
         model.addAttribute("uid", user.getId());
         return "system/circulate/bookCirculateManager1";
     }
@@ -97,7 +97,7 @@ public class SysController {
     @RequestMapping("toBookBorrowManager")
     public String toBookBorrowManager(Model model){
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("type", user.getType());
+        model.addAttribute("type", user.getRid());
         model.addAttribute("uid", user.getId());
         return "system/borrow/bookBorrowManager";
     }
@@ -109,7 +109,7 @@ public class SysController {
     @RequestMapping("toDeptManager")
     public String toDeptManager(Model model){
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("type", user.getType());
+        model.addAttribute("type", user.getRid());
         model.addAttribute("uid", user.getId());
         return "system/dept/deptManager";
     }
@@ -121,7 +121,7 @@ public class SysController {
     @RequestMapping("toEchartsManager")
     public String toEchartsManager(Model model){
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("type", user.getType());
+        model.addAttribute("type", user.getRid());
         model.addAttribute("uid", user.getId());
 
         QueryWrapper<Book> queryWrapper = new QueryWrapper<>();

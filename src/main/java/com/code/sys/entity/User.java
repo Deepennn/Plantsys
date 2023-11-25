@@ -30,8 +30,6 @@ public class User implements Serializable {
 
     private String pwd;
 
-    private Integer type;
-
     private Integer rid;
 
     private String createTime;
@@ -107,13 +105,6 @@ public class User implements Serializable {
         this.pwd = pwd;
     }
 
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
 
     public Integer getRid() {
         return rid;

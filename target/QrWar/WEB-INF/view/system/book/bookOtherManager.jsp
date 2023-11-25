@@ -124,7 +124,7 @@
     </form>
 </div>
 
-<%--查看新闻的div--%>
+<%--增加图书的div--%>
 <div id="viewNewsDiv" style="padding: 10px;display: none">
     <form class="layui-form" lay-filter="dataFrm2" id="dataFrm2" style="margin-right: 20px">
         <div class="layui-form-item">
@@ -214,7 +214,7 @@
             , cellMinWidth: 100 //设置列的最小默认宽度
             , page: true  //是否启用分页
             , cols: [[   //列表数据
-                {field: 'id', title: '编号', align: 'center'}
+                {field: 'id', title: '图书编号', align: 'center'}
                 , {field: 'name', title: '图书名称', align: 'center'}
                 , {field: 'deptName', title: '所属单位', align: 'center'}
                 , {field: 'publishTime', title: '出版时间', align: 'center'}
@@ -231,7 +231,7 @@
                 //     }}
                 , {field: 'img', title: '图片', width:120, align:'center', templet:function (d) {
                         return '<img src="/file/downloadFile.action?path='+d.img+'"/>'}}
-                , {fixed: 'right', title: '操作', toolbar: '#newsBar', align: 'center', width: 220}
+                , {fixed: 'right', title: '操作', toolbar: '#newsBar', align: 'center', width: 200}
             ]],
             done:function (data, curr, count) {
                 //不是第一页时，如果当前返回的数据为0那么就返回上一页

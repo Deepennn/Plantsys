@@ -165,11 +165,11 @@
                 , {field: 'deptName', title: '所属单位', align: 'center', width: '130'}
                 , {
                     field: 'type', title: '用户身份', align: 'center', width: '130', templet: function (d) {
-                        if (d.type == 1) {
+                        if (d.rid == 1) {
                             return '管理员';
-                        } else if (d.type == 2) {
+                        } else if (d.rid == 2) {
                             return '工作人员';
-                        } else if (d.type == 3) {
+                        } else if (d.rid == 3) {
                             return '读者';
                         }
                     }
