@@ -15,6 +15,7 @@ import com.code.sys.vo.UserVo;
 import nl.captcha.Captcha;
 import nl.captcha.backgrounds.GradiatedBackgroundProducer;
 import nl.captcha.gimpy.RippleGimpyRenderer;
+import nl.captcha.noise.StraightLineNoiseProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -113,7 +114,7 @@ public class LoginController {
     public void captcha(HttpServletRequest request, HttpServletResponse response)throws IOException {
         // 生成验证码
         Captcha captcha = new Captcha.Builder(200, 50)
-                .addNoise()
+                .addNoise(new StraightLineNoiseProducer())
                 .addText()
                 .addBackground(new GradiatedBackgroundProducer())  // 添加背景
                 .build();

@@ -10,15 +10,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="icon" href="${alfred}/resources/favicon6.ico">
-	<link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all" />
-	<link rel="stylesheet" href="${alfred}/resources/css/public.css" media="all" />
+	<link rel="icon" href="/resources/favicon6.ico">
+	<link rel="stylesheet" href="/resources/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/resources/css/public.css" media="all" />
 </head>
 <body class="loginBody" >
 <br><br>
 <h1 align="center" style="color:LightSteelBlue ; font-size: 50px">图书管理系统</h1>
 	<br><br>
-	<form class="layui-form" id="loginFrm" method="post" action="${alfred }/login/register.action" style="height: 560px">
+	<form class="layui-form" id="loginFrm" method="post" action="/login/register.action" style="height: 560px">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 			<legend>注册</legend>
 		</fieldset>
@@ -66,8 +66,8 @@
 			<button class="layui-btn layui-block" lay-filter="login" lay-submit>注册</button>
 		</div>
 	</form>
-	<script type="text/javascript" src="${alfred}/resources/layui/layui.js"></script>
-	<script type="text/javascript" src="${alfred}/resources/js/cache.js"></script>
+	<script type="text/javascript" src="/resources/layui/layui.js"></script>
+	<script type="text/javascript" src="/resources/js/cache.js"></script>
 	<script type="text/javascript">
 	layui.use(['form','layer','jquery', 'upload'],function(){
 	    var form = layui.form,
@@ -85,7 +85,7 @@
 
 		upload.render({
 			elem: '#uploadImage',
-			url: '${alfred}/file/uploadFile.action',
+			url: '/file/uploadFile.action',
 			method: "post",
 			acceptMime: 'images/*',
 			field: "mf",
@@ -113,7 +113,7 @@
 	        }
 	    })
 		$(".magt3").click(function(e){
-		<%--<a href="${alfred}/login/toLogin.action" class="signOut"><i class="seraph icon-tuichu"></i><cite>退出</cite></a>--%>
+		<%--<a href="/login/toLogin.action" class="signOut"><i class="seraph icon-tuichu"></i><cite>退出</cite></a>--%>
 		})
 	})
 

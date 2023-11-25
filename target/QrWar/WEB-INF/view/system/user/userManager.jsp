@@ -9,48 +9,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="icon" href="${alfred}/resources/favicon6.ico">
-    <link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/css/public.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/dtree.css">
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/font/dtreefont.css">
+    <link rel="icon" href="/resources/favicon6.ico">
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/resources/css/public.css" media="all"/>
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/font/dtreefont.css">
     <style>
 
     </style>
 </head>
 <body class="childrenBody">
-<!-- 搜索条件开始 -->
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-    <legend>查询条件</legend>
-</fieldset>
-<form class="layui-form" method="post" id="searchFrm">
+<%--<!-- 搜索条件开始 -->--%>
+<%--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">--%>
+<%--    <legend>查询条件</legend>--%>
+<%--</fieldset>--%>
+<%--<form class="layui-form" method="post" id="searchFrm">--%>
 
-    <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">用户姓名:</label>
-            <div class="layui-input-inline" style="padding: 5px">
-                <input type="text" name="realname" autocomplete="off" class="layui-input layui-input-inline"
-                       placeholder="请输入用户名称" style="height: 30px;border-radius: 10px">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <button type="button"
-                    class="layui-btn layui-btn-normal layui-icon layui-icon-search layui-btn-radius layui-btn-sm"
-                    id="doSearch" style="margin-top: 4px">查询
-            </button>
-            <button type="reset"
-                    class="layui-btn layui-btn-warm layui-icon layui-icon-refresh layui-btn-radius layui-btn-sm"
-                    style="margin-top: 4px">重置
-            </button>
-        </div>
-    </div>
-</form>
+<%--    <div class="layui-form-item">--%>
+<%--        <div class="layui-inline">--%>
+<%--            <label class="layui-form-label">用户姓名:</label>--%>
+<%--            <div class="layui-input-inline" style="padding: 5px">--%>
+<%--                <input type="text" name="realname" autocomplete="off" class="layui-input layui-input-inline"--%>
+<%--                       placeholder="请输入用户名称" style="height: 30px;border-radius: 10px">--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="layui-inline">--%>
+<%--            <button type="button"--%>
+<%--                    class="layui-btn layui-btn-normal layui-icon layui-icon-search layui-btn-radius layui-btn-sm"--%>
+<%--                    id="doSearch" style="margin-top: 4px">查询--%>
+<%--            </button>--%>
+<%--            <button type="reset"--%>
+<%--                    class="layui-btn layui-btn-warm layui-icon layui-icon-refresh layui-btn-radius layui-btn-sm"--%>
+<%--                    style="margin-top: 4px">重置--%>
+<%--            </button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</form>--%>
 
 <!-- 数据表格开始 -->
 <table class="layui-hide" id="userTable" lay-filter="userTable"></table>
 
 <div id="userToolBar" style="display: none;">
-    <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">增加</button>
+    <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">增加工作人员</button>
 </div>
 <div id="userBar" style="display: none;">
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">编辑</a>
@@ -62,17 +62,17 @@
     <form class="layui-form" lay-filter="dataFrm" id="dataFrm">
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">用户姓名:</label>
+                <label class="layui-form-label">真实姓名:</label>
                 <div class="layui-input-inline">
                     <input type="hidden" name="id">
-                    <input type="text" name="realname" lay-verify="required" placeholder="请输入用户姓名"
+                    <input type="text" name="realname" lay-verify="required" placeholder="请输入真实姓名"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">登陆名称:</label>
+                <label class="layui-form-label">登陆用户名（工号）:</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="loginname" lay-verify="required" placeholder="请输入登陆名称"
+                    <input type="text" name="loginname" lay-verify="required" placeholder="请输入用户名（工号）"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -113,7 +113,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">所属单位:</label>
                 <div class="layui-input-inline">
-                    <select name="deptId" id="search_education" lay-verify="required">
+                    <select name="deptId" id="dept" lay-verify="required">
                         <option value="">请选择单位</option>
                     </select>
                 </div>
@@ -134,11 +134,11 @@
 </div>
 
 
-<script src="${alfred}/resources/layui/layui.js"></script>
+<script src="/resources/layui/layui.js"></script>
 <script type="text/javascript">
     var tableIns;
     layui.extend({
-        dtree: '${alfred}/resources/layui_ext/dist/dtree'
+        dtree: '/resources/layui_ext/dist/dtree'
     }).use(['jquery', 'layer', 'form', 'table', 'dtree'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
@@ -148,15 +148,15 @@
         //渲染数据表格
         tableIns = table.render({
             elem: '#userTable'   //渲染的目标对象
-            , url: '${alfred}/user/findPage.action' //数据接口
+            , url: '/user/findPage.action' //数据接口
             , title: '用户数据表'//数据导出来的标题
             , toolbar: "#userToolBar"   //表格的工具条
-            , height: 'full-210'
+            , height: 'full-150'
             , cellMinWidth: 100 //设置列的最小默认宽度
             , page: true  //是否启用分页
             , cols: [[   //列表数据
-                {type: 'checkbox', fixed: 'left'}
-                , {field: 'id', title: 'ID', align: 'center', width: '55'}
+                // {type: 'checkbox', fixed: 'left'},
+                 {field: 'id', title: 'ID', align: 'center', width: '55'}
                 , {field: 'realname', title: '用户姓名', align: 'center', width: '110'}
                 , {field: 'loginname', title: '登陆名称', align: 'center', width: '110'}
                 , {field: 'phone', title: '手机号码', align: 'center', width: '140'}
@@ -168,7 +168,7 @@
                         if (d.type == 1) {
                             return '管理员';
                         } else if (d.type == 2) {
-                            return '员工';
+                            return '工作人员';
                         } else if (d.type == 3) {
                             return '读者';
                         }
@@ -193,7 +193,7 @@
             var params = $("#searchFrm").serialize();
             //alert(params);
             tableIns.reload({
-                url: "${alfred}/user/findPage.action?" + params,
+                url: "/user/findPage.action?" + params,
                 page: {curr: 1}
             })
         });
@@ -201,7 +201,7 @@
         //加载查询条件分类的下拉列表
         $.get("/dept/loadAllForSelect.action", function (res) {
             var data = res.data;
-            var dom = $("#search_education");
+            var dom = $("#dept");
             var html = '<option value="0">请选择单位</option>'
             $.each(data, function (index, item) {
                 html += '<option value="' + item.id + '">' + item.name + '</option>'
@@ -226,7 +226,7 @@
             if (layEvent === 'del') { //删除
                 layer.confirm('真的删除【' + data.realname + '】这个用户么？', function (index) {
                     //向服务端发送删除指令
-                    $.post("${alfred}/user/delete.action", {id: data.id}, function (res) {
+                    $.post("/user/delete.action", {id: data.id}, function (res) {
                         layer.msg(res.msg);
                         //刷新数据表格
                         tableIns.reload();
@@ -234,6 +234,11 @@
                 });
             } else if (layEvent === 'edit') { //编辑
                 //编辑，打开修改界面
+                if(data.type===3){
+                    $('#dept').prop('disabled', true);
+                }else{
+                    $('#dept').prop('disabled', false);
+                }
                 openUpdateUser(data);
             }
         });
@@ -251,13 +256,13 @@
                 success: function (index) {
                     //清空表单数据
                     $("#dataFrm")[0].reset();
-                    url = "${alfred}/user/save.action";
+                    url = "/user/save.action";
                 }
             });
         }
-
         //打开编辑页面
         function openUpdateUser(data) {
+
             mainIndex = layer.open({
                 type: 1,
                 title: '编辑',
@@ -265,7 +270,7 @@
                 area: ['700px', '580px'],
                 success: function (index) {
                     form.val("dataFrm", data);
-                    url = "${alfred}/user/save.action";
+                    url = "/user/save.action";
                 }
             });
         }

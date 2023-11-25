@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="icon" href="${alfred}/resources/favicon6.ico">
+	<link rel="icon" href="/resources/favicon6.ico">
 	<link rel="stylesheet" href="/resources/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="/resources/css/public.css" media="all" />
 </head>
@@ -18,7 +18,7 @@
 <br><br>
 <h1 align="center"  style="color:LightSteelBlue ; font-size: 60px">图书管理系统</h1>
 	<br>
-	<form class="layui-form" id="loginFrm" method="post" action="${alfred }/login/login.action" style="height: 450px">
+	<form class="layui-form" id="loginFrm" method="post" action="/login/login.action" style="height: 450px">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 			<legend>登录</legend>
 		</fieldset>
@@ -41,19 +41,20 @@
 		</div>
 
 		<!-- 验证码 -->
-		<div class="layui-form-item">
-			<input type="text" name="captcha" required lay-verify="required" placeholder="验证码" class="layui-input">
+		<div class="layui-form-item input-item">
+			<label for="captcha">验证码</label>
+			<input type="text" name="captcha" id="captcha" required lay-verify="required" placeholder="验证码" class="layui-input">
 			<img id="captchaImage" src="/login/captcha.action?Math.random()" onclick="refreshCaptcha()">
 		</div>
 
 		<div class="layui-form-item">
 			<button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
 			<br/>
-			<a class="layui-btn layui-block magt3" lay-filter="register" href="${alfred}/login/toRegister.action">注册</a>
+			<a class="layui-btn layui-block magt3" lay-filter="register" href="/login/toRegister.action">注册</a>
 		</div>
 
 		<div class="layui-form-item layui-row" style="text-align: right;color: blue;">
-			<a style="text-align: right " href="${alfred}/login/toRestPwd.action">重置密码</a>
+			<a style="text-align: right " href="/login/toRestPwd.action">重置密码</a>
 		</div>
 		<div class="layui-form-item layui-row" style="text-align: center;color: red;">
 			${error}
@@ -96,7 +97,7 @@
 	        }
 	    })
 		$(".magt3").click(function(e){
-		<%--<a href="${alfred}/login/toLogin.action" class="signOut"><i class="seraph icon-tuichu"></i><cite>退出</cite></a>--%>
+		<%--<a href="/login/toLogin.action" class="signOut"><i class="seraph icon-tuichu"></i><cite>退出</cite></a>--%>
 		})
 	})
 

@@ -92,7 +92,7 @@ public class BookCirculateController {
     public ResultObj update(BookCirculate circulate) {
         try {
             // 归还申请
-            if (3 == circulate.getCirculateStatus()) {
+            if (2 == circulate.getCirculateStatus()) {
                 circulate.setReturnTime(DateUtil.now());
             }
 

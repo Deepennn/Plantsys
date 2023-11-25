@@ -10,59 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="icon" href="${alfred}/resources/favicon6.ico">
-    <link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/css/public.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/dtree.css">
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/font/dtreefont.css">
+    <link rel="icon" href="/resources/favicon6.ico">
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/resources/css/public.css" media="all"/>
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/font/dtreefont.css">
 </head>
 <body class="childrenBody">
-
-<!-- 搜索条件开始 -->
-<%--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">--%>
-<%--    <legend>查询条件</legend>--%>
-<%--</fieldset>--%>
-<%--<form class="layui-form" method="post" id="searchFrm">--%>
-<%--    <div class="layui-form-item">--%>
-<%--        <div class="layui-inline">--%>
-<%--            <label class="layui-form-label">编号:</label>--%>
-<%--            <div class="layui-input-inline" style="padding: 5px">--%>
-<%--                <input type="text" name="id" autocomplete="off" class="layui-input layui-input-inline"--%>
-<%--                       placeholder="请输入图书编号" style="height: 30px;border-radius: 10px">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-inline">--%>
-<%--            <label class="layui-form-label">名称:</label>--%>
-<%--            <div class="layui-input-inline" style="padding: 5px">--%>
-<%--                <input type="text" name="name" autocomplete="off" class="layui-input layui-input-inline"--%>
-<%--                       placeholder="请输入图书名称" style="height: 30px;border-radius: 10px">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-inline">--%>
-<%--            <label class="layui-form-label">作者:</label>--%>
-<%--            <div class="layui-input-inline" style="padding: 5px">--%>
-<%--                <input type="text" name="author" autocomplete="off" class="layui-input layui-input-inline"--%>
-<%--                       placeholder="请输入图书作者" style="height: 30px;border-radius: 10px">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-inline">--%>
-<%--            <label class="layui-form-label">出版社:</label>--%>
-<%--            <div class="layui-input-inline" style="padding: 5px">--%>
-<%--                <input type="text" name="press" autocomplete="off" class="layui-input layui-input-inline"--%>
-<%--                       placeholder="请输入出版社" style="height: 30px;border-radius: 10px">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-inline" style="margin-left: 50px">--%>
-<%--            <button type="button"--%>
-<%--                    class="layui-btn layui-btn-normal layui-icon layui-icon-search layui-btn-radius layui-btn-sm"--%>
-<%--                    id="doSearch">查询--%>
-<%--            </button>--%>
-<%--            <button type="reset"--%>
-<%--                    class="layui-btn layui-btn-warm layui-icon layui-icon-refresh layui-btn-radius layui-btn-sm">重置--%>
-<%--            </button>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</form>--%>
 
 <!-- 数据表格开始 -->
 <table class="layui-hide" id="newsTable" lay-filter="newsTable"></table>
@@ -83,7 +37,7 @@
 </c:if>
 </div>
 
-<script src="${alfred}/resources/layui/layui.js"></script>
+<script src="/resources/layui/layui.js"></script>
 <script type="text/javascript">
     var tableIns;
     layui.use(['jquery', 'layer', 'form', 'table', 'laydate', 'upload'], function () {
@@ -107,7 +61,7 @@
         //渲染数据表格
         tableIns = table.render({
             elem: '#newsTable'   //渲染的目标对象
-            , url: '${alfred}/bookBorrow/findPage.action' //数据接口
+            , url: '/bookBorrow/findPage.action' //数据接口
             , title: '图书归还信息'//数据导出来的标题
             , toolbar: "#newsToolBar"   //表格的工具条
             , height: 'full-190'
@@ -152,7 +106,7 @@
             var params = $("#searchFrm").serialize();
             //alert(params);
             tableIns.reload({
-                url: "${alfred}/book/findPage.action?" + params,
+                url: "/book/findPage.action?" + params,
                 page: {curr: 1}
             })
         });
@@ -174,8 +128,8 @@
 
         function updateStatus(id, status) {
             layer.confirm('是否确认该操作？', function (index) {
-                //向服务端发送删除指令
-                $.post("${alfred}/bookBorrow/update.action", {id: id, borrowStatus: status}, function (res) {
+                //向服务端发送更新指令
+                $.post("/bookBorrow/update.action", {id: id, borrowStatus: status}, function (res) {
                     layer.msg(res.msg);
                     //刷新数据表格
                     tableIns.reload();

@@ -10,11 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="icon" href="${alfred}/resources/favicon6.ico">
-    <link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/css/public.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/dtree.css">
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/font/dtreefont.css">
+    <link rel="icon" href="/resources/favicon6.ico">
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/resources/css/public.css" media="all"/>
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/font/dtreefont.css">
 </head>
 <body class="childrenBody">
 
@@ -33,7 +33,7 @@
     {{#  }}}
 </div>
 
-<script src="${alfred}/resources/layui/layui.js"></script>
+<script src="/resources/layui/layui.js"></script>
 <script type="text/javascript">
     var tableIns;
     layui.use(['jquery', 'layer', 'form', 'table', 'laydate', 'upload'], function () {
@@ -55,7 +55,7 @@
         //渲染数据表格
         tableIns = table.render({
             elem: '#newsTable'   //渲染的目标对象
-            , url: '${alfred}/bookCirculate/findPage1.action' //数据接口
+            , url: '/bookCirculate/findPage1.action' //数据接口
             , title: '图书信息'//数据导出来的标题
             , toolbar: "#newsToolBar"   //表格的工具条
             , height: 'full-190'
@@ -104,7 +104,7 @@
             var params = $("#searchFrm").serialize();
             //alert(params);
             tableIns.reload({
-                url: "${alfred}/bookCirculate/findPage.action?" + params,
+                url: "/bookCirculate/findPage.action?" + params,
                 page: {curr: 1}
             })
         });
@@ -125,7 +125,7 @@
         function updateStatus(id, status) {
             layer.confirm('是否确认该操作？', function (index) {
                 //向服务端发送删除指令
-                $.post("${alfred}/bookCirculate/update.action", {id: id, circulateStatus: status}, function (res) {
+                $.post("/bookCirculate/update.action", {id: id, circulateStatus: status}, function (res) {
                     layer.msg(res.msg);
                     //刷新数据表格
                     tableIns.reload();

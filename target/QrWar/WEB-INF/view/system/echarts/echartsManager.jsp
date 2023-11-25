@@ -10,11 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="icon" href="${alfred}/resources/favicon6.ico">
-    <link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/css/public.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/dtree.css">
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/font/dtreefont.css">
+    <link rel="icon" href="/resources/favicon6.ico">
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/resources/css/public.css" media="all"/>
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/font/dtreefont.css">
 </head>
 <body class="childrenBody">
 
@@ -79,8 +79,8 @@
 </div>
 
 
-<script src="${alfred}/resources/layui/layui.js"></script>
-<script src="${alfred}/resources/echarts/js/echarts.min.js"></script>
+<script src="/resources/layui/layui.js"></script>
+<script src="/resources/echarts/js/echarts.min.js"></script>
 <script type="text/javascript">
     var tableIns;
     layui.use(['jquery', 'layer', 'form', 'table'], function () {
@@ -89,7 +89,7 @@
         var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
         var echartsMonth = echarts.init(document.getElementById('echarts-month'), 'walden');
 
-        $.get("${alfred}/bookBorrow/echarts.action?type=1",function(data){
+        $.get("/bookBorrow/echarts.action?type=1",function(data){
             var timeData = [];
             var numData = [];
             console.log(data.data)
@@ -133,7 +133,7 @@
             echartsRecords.setOption(optionRecords);
         })
 
-        $.get("${alfred}/bookBorrow/echarts.action?type=2",function(data){
+        $.get("/bookBorrow/echarts.action?type=2",function(data){
             var timeData = [];
             var numData = [];
             console.log(data.data)

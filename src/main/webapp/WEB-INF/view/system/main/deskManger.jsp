@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/css/public.css" media="all"/>
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/resources/css/public.css" media="all"/>
 </head>
 <body class="childrenBody">
     <blockquote class="layui-elem-quote layui-bg-green">
@@ -17,7 +17,7 @@
     </blockquote>
 </div>
 
-<script type="text/javascript" src="${alfred}/resources/layui/layui.js"></script>
+<script type="text/javascript" src="/resources/layui/layui.js"></script>
 <script>
 
     //获取系统时间

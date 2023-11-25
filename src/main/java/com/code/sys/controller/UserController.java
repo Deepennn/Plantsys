@@ -6,6 +6,7 @@ import com.code.sys.constant.SysConstant;
 import com.code.sys.entity.Book;
 import com.code.sys.entity.Dept;
 import com.code.sys.service.DeptService;
+import com.code.sys.utils.AppFileUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.code.sys.entity.User;
@@ -66,14 +67,17 @@ public class UserController {
     @RequestMapping("save")
     public ResultObj save(UserVo userVo){
         try {
+            System.out.println("userVo.getId():"+userVo.getId());
             if (null == userVo.getId()) {
                 // 密码为工号（登录名称）后四位
                 if (userVo.getLoginname().length() >= 4) {
                     String pwd = userVo.getLoginname().substring(userVo.getLoginname().length() - 4);
+                    System.out.println("pwd:"+pwd);
                     userVo.setPwd(DigestUtils.md5DigestAsHex(pwd.getBytes()));
                 } else {
                     userVo.setPwd(DigestUtils.md5DigestAsHex(userVo.getLoginname().getBytes()));
                 }
+                userVo.setImg("2023-11-23/111111.png");
                 userVo.setCreateTime(DateUtil.now());
 
             }

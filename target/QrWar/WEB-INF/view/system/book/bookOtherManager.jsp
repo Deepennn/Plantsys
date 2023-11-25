@@ -10,11 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="icon" href="${alfred}/resources/favicon6.ico">
-    <link rel="stylesheet" href="${alfred}/resources/layui/css/layui.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/css/public.css" media="all"/>
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/dtree.css">
-    <link rel="stylesheet" href="${alfred}/resources/layui_ext/dtree/font/dtreefont.css">
+    <link rel="icon" href="/resources/favicon6.ico">
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/resources/css/public.css" media="all"/>
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/font/dtreefont.css">
 </head>
 <body class="childrenBody">
 
@@ -183,7 +183,7 @@
     </form>
 </div>
 
-<script src="${alfred}/resources/layui/layui.js"></script>
+<script src="/resources/layui/layui.js"></script>
 <script type="text/javascript">
     var tableIns;
     layui.use(['jquery', 'layer', 'form', 'table', 'laydate', 'upload'], function () {
@@ -207,7 +207,7 @@
         //渲染数据表格
         tableIns = table.render({
             elem: '#newsTable'   //渲染的目标对象
-            , url: '${alfred}/book/findOtherPage.action' //数据接口
+            , url: '/book/findOtherPage.action' //数据接口
             , title: '图书信息'//数据导出来的标题
             , toolbar: "#newsToolBar"   //表格的工具条
             , height: 'full-190'
@@ -270,14 +270,14 @@
             var params = $("#searchFrm").serialize();
             //alert(params);
             tableIns.reload({
-                url: "${alfred}/book/findOtherPage.action?" + params,
+                url: "/book/findOtherPage.action?" + params,
                 page: {curr: 1}
             })
         });
 
         upload.render({
             elem: '#mobileTest1',
-            url: '${alfred}/file/uploadFile.action',
+            url: '/file/uploadFile.action',
             method: "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
             acceptMime: 'images/*',
             field: "mf",
@@ -304,7 +304,7 @@
             if (layEvent === 'del') { //删除
                 layer.confirm('真的删除【' + data.name + '】这个图书么？', function (index) {
                     //向服务端发送删除指令
-                    $.post("${alfred}/book/delete.action", {id: data.id}, function (res) {
+                    $.post("/book/delete.action", {id: data.id}, function (res) {
                         layer.msg(res.msg);
                         //刷新数据表格
                         tableIns.reload();
@@ -333,7 +333,7 @@
                 success: function (index) {
                     //清空表单数据
                     $("#dataFrm")[0].reset();
-                    url = "${alfred}/book/save.action";
+                    url = "/book/save.action";
                 }
             });
         }
@@ -348,7 +348,7 @@
                 success: function (index) {
                     form.val("dataFrm", data);
                     $('#mobileCoverImg').attr('src', "/file/downloadFile.action?path=" + data.img);
-                    url = "${alfred}/book/save.action";
+                    url = "/book/save.action";
                 }
             });
         }
@@ -363,7 +363,7 @@
                 success: function (index) {
                     form.val("dataFrm1", data);
                     $("#bookId").val(data.id);
-                    url = "${alfred}/bookCirculate/save.action";
+                    url = "/bookCirculate/save.action";
                 }
             });
         }
