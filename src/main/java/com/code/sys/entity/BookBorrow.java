@@ -73,8 +73,8 @@ public class BookBorrow implements Serializable {
      */
     private Integer borrowStatus;
 
-//    @TableField(exist = false)
-//    private String bookName;
+    @TableField(exist = false)
+    private String bookName;
 
     @Override
     public String toString() {

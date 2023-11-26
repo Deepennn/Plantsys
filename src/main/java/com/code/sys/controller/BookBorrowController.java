@@ -58,7 +58,7 @@ public class BookBorrowController {
         }
 
         List<BookBorrow> data = this.bookBorrowService.findPage(userId, deptId);
-        System.out.println(data.get(0).getBookId());
+        System.out.println(data.get(0));
         System.out.println(data.get(0).getBorrowStatus());
         return new DataGridView(page.getTotal(),data);
     }

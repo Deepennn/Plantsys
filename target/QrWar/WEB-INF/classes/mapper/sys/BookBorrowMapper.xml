@@ -4,7 +4,8 @@
 
     <select id="findPage" resultType="com.code.sys.entity.BookBorrow">
         SELECT
-            bb.*
+            bb.*,
+            b.NAME AS book_name
         FROM
             sys_book_borrow bb
                 LEFT JOIN sys_book b ON bb.book_id = b.id

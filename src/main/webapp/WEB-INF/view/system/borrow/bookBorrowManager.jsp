@@ -70,6 +70,7 @@
             , cols: [[   //列表数据
                   {field: 'id', title: '借阅ID', align: 'center'}
                 , {field: 'bookId', title: '图书编号', align: 'center'}
+                , {field: 'bookName', title: '图书名称', align: 'center'}
                 , {field: 'userId', title: '读者ID', align: 'center'}
                 , {field: 'userName', title: '读者名称', align: 'center'}
                 , {field: 'phone', title: '联系方式', align: 'center'}
