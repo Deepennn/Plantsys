@@ -4,14 +4,7 @@
 
     <select id="findPage" resultType="com.code.sys.entity.BookBorrow">
         SELECT
-            bb.id,
-            bb.book_id,
-            bb.user_id,
-            bb.reason,
-            bb.user_name,
-            bb.phone,
-            bb.remark,
-            bb.borrow_time, bb.return_time, bb.borrow_status
+            bb.*
         FROM
             sys_book_borrow bb
                 LEFT JOIN sys_book b ON bb.book_id = b.id
