@@ -16,20 +16,6 @@ public interface MenuMapper extends BaseMapper<Menu> {
      */
     List<Menu> queryAllMenu(Menu menu);
 
-    /**
-     * 根据pid查询菜单数量
-     * @param pid
-     * @return
-     */
-    Integer queryMenuByPid(@Param("pid")Integer pid);
-
-    /**
-     * 根据角色ID查询菜单
-     * @param available
-     * @param roleid
-     * @return
-     */
-    List<Menu> queryMenuByRoleId(@Param("available") Integer available,@Param("rid") Integer roleid);
 
     /**
      * 根据用户id查询菜单

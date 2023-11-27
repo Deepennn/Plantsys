@@ -35,27 +35,4 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return menuMapper.queryMenuByUid(menuVo.getAvailable(),userId);
     }
 
-    /**
-     * 查询所有菜单的实现类
-     * @param menuVo
-     * @return
-     */
-    @Override
-    public DataGridView queryAllMenu(MenuVo menuVo) {
-        Page<Object> page = PageHelper.startPage(menuVo.getPage(),menuVo.getLimit());
-        List<Menu> data = this.menuMapper.queryAllMenu(menuVo);
-        System.out.println("data = " + data);
-        return new DataGridView(page.getTotal(),data);
-    }
-
-    /**
-     * 根据pid查询菜单的数量
-     * @param pid
-     * @return
-     */
-    @Override
-    public Integer queryMenuByPid(Integer pid) {
-        return this.menuMapper.queryMenuByPid(pid);
-    }
-
 }

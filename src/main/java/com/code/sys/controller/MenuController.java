@@ -71,29 +71,4 @@ public class MenuController {
         }
         return new DataGridView(nodes);
     }
-
-    /**
-     * 加载菜单列表返回
-     * @return
-     */
-    @RequestMapping("loadAllMenu")
-    public DataGridView loadAllMenu(MenuVo menuVo){
-        return this.menuService.queryAllMenu(menuVo);
-    }
-
-    /**
-     * 根据id判断当前菜单有没有子节点
-     * 有返回code=>0
-     * @param menuVo
-     * @return
-     */
-    @RequestMapping("checkMenuHasChildren")
-    public ResultObj checkMenuHasChildren(MenuVo menuVo){
-        Integer count = menuService.queryMenuByPid(menuVo.getId());
-        if (count>0){
-            return ResultObj.STATUS_TRUE;
-        }else {
-            return ResultObj.STATUS_FALSE;
-        }
-    }
 }

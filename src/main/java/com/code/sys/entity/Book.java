@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
+ * 图书表
  */
 @Data
 @TableName("sys_book")

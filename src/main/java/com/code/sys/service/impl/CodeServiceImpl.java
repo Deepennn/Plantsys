@@ -10,7 +10,7 @@ import com.code.sys.service.DeptService;
 import org.springframework.stereotype.Service;
 
 /**
- * 单位表 服务实现类
+ * 验证码 服务实现类
  * @author
  * @since 2023-11-17
  */

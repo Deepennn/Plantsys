@@ -25,17 +25,4 @@ public interface MenuService extends IService<Menu> {
       * */
      List<Menu> queryMenuByUserIdForList(MenuVo menuVo,Integer userId);
 
-
-    /**
-     * 查询所有菜单
-     * @param menuVo
-     * @return
-     */
-    DataGridView queryAllMenu(MenuVo menuVo);
-
-    /**
-     *根据pid查询菜单的数量
-     **/
-    Integer queryMenuByPid(Integer pid);
-
 }
