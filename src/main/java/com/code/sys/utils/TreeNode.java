@@ -16,7 +16,6 @@ public class TreeNode {
     private String icon;
     private String href;
     private Boolean spread;
-    private String target;
     // 节点的子节点
     private List<TreeNode> children = new ArrayList<>();
 
@@ -31,16 +30,14 @@ public class TreeNode {
      * @param icon
      * @param href
      * @param spread
-     * @param target
      */
-    public TreeNode(Integer id, Integer pid, String title, String icon, String href, Boolean spread, String target) {
+    public TreeNode(Integer id, Integer pid, String title, String icon, String href, Boolean spread) {
         this.id = id;
         this.pid = pid;
         this.title = title;
         this.icon = icon;
         this.href = href;
         this.spread = spread;
-        this.target = target;
     }
 
     /**
@@ -107,13 +104,7 @@ public class TreeNode {
         this.spread = spread;
     }
 
-    public String getTarget() {
-        return target;
-    }
 
-    public void setTarget(String target) {
-        this.target = target;
-    }
 
     public List<TreeNode> getChildren() {
         return children;

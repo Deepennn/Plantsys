@@ -19,8 +19,7 @@ public class Menu {
     // 展开状态字段
     private Integer spread;
 
-    // 链接的打开目标
-    private String target;
+
 
     private String icon;
 
@@ -29,13 +28,12 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(Integer id, Integer pid, String title, String href, Integer spread, String target, String icon, Integer available) {
+    public Menu(Integer id, Integer pid, String title, String href, Integer spread, String icon, Integer available) {
         this.id = id;
         this.pid = pid;
         this.title = title;
         this.href = href;
         this.spread = spread;
-        this.target = target;
         this.icon = icon;
         this.available = available;
     }

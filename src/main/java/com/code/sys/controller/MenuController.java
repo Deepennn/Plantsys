@@ -43,8 +43,7 @@ public class MenuController {
             String icon = menu.getIcon();
             String href = menu.getHref();
             Boolean spread = menu.getSpread() == SysConstant.SPREAD_TRUE ? true : false;
-            String target = menu.getTarget();
-            nodes.add(new TreeNode(id, pid, title, icon, href, spread, target));
+            nodes.add(new TreeNode(id, pid, title, icon, href, spread));
         }
         return TreeNodeBuilder.builder(nodes, 1);
     }
@@ -66,8 +65,8 @@ public class MenuController {
             String icon = menu.getIcon();
             String href = menu.getHref();
             Boolean spread = menu.getSpread() == SysConstant.SPREAD_TRUE ? true : false;
-            String target = menu.getTarget();
-            nodes.add(new TreeNode(id, pid, title, icon, href, spread, target));
+
+            nodes.add(new TreeNode(id, pid, title, icon, href, spread));
         }
         return new DataGridView(nodes);
     }

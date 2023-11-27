@@ -7,12 +7,11 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="href" jdbcType="VARCHAR" property="href" />
     <result column="spread" jdbcType="INTEGER" property="spread" />
-    <result column="target" jdbcType="VARCHAR" property="target" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="available" jdbcType="INTEGER" property="available" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, pid, title, href, spread, target, icon, available
+    id, pid, title, href, spread, icon, available
   </sql>
 
   <!--查询所有菜单-->
