@@ -39,7 +39,7 @@ public class EmailUtils {
      * @param content 邮件内容
      * @param title   邮件标题
      *
-     * 后端controller中调用.sendEmail()方法来实现邮件的发送
+     * 在controller中调用.sendEmail()方法来实现邮件的发送
      */
     public static void sendEmail(String emailTo, String content, String title) throws Exception {
         //构建“邮件发送”对象
@@ -53,6 +53,5 @@ public class EmailUtils {
         smm.setText(content);   //邮箱内容给
         sender.send(smm);
         System.out.println("邮件发送" + emailTo + "成功....");
-
     }
 }

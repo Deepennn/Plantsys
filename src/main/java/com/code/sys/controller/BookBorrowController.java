@@ -140,24 +140,4 @@ public class BookBorrowController {
         map.put("numData", numData);
         return new DataGridView(0L, map);
     }
-
-    @RequestMapping("echartsMonth")
-    public DataGridView echartsMonth(){
-        User user = (User) WebUtils.getHttpSession().getAttribute("user");
-
-        Map<String, Object> map = new HashMap<>();
-
-        List<String> timeData = new ArrayList<>();
-        List<Integer> numData = new ArrayList<>();
-        List<BookVo> list = this.bookBorrowService.echarts(user.getDeptId(), 2);
-        if (null != list) {
-            for (BookVo vo : list) {
-                timeData.add(vo.getTime());
-                numData.add(vo.getNum());
-            }
-        }
-        map.put("timeData", timeData);
-        map.put("numData", numData);
-        return new DataGridView(0L, map);
-    }
 }

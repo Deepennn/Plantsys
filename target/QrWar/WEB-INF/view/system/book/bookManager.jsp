@@ -216,7 +216,7 @@
     </form>
 </div>
 
-<%--添加div--%>
+<%--详情div--%>
 <div id="viewNewsDiv" style="padding: 10px;display: none">
     <form class="layui-form" lay-filter="dataFrm2" id="dataFrm2" style="margin-right: 20px">
         <div class="layui-form-item">

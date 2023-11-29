@@ -10,10 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <p>
  * 图书借阅表 Mapper 接口
- * </p>
- *
  * @author
  * @since 2023-11-18
  */

@@ -107,12 +107,10 @@ public class FileController {
 			ExcelReader reader = ExcelUtil.getReader(file.getInputStream());
 			// 将excel的列映射到实实体类对应的字段
 			List<Book> books = reader.readAll(Book.class);
-
 			// 得到当前日期作为文件夹名称
 			String dirName = RandomUtils.getCurrentDateForString();
 			// 构造文件夹对象
 			File dirFile = new File(AppFileUtils.PATH, dirName);
-
 			if (!dirFile.exists()) {
 				dirFile.mkdirs();// 创建文件夹
 			}
@@ -123,14 +121,10 @@ public class FileController {
 				String oldName = new File(book.getImg()).getName();
 				// 根据文件原名得到新名
 				String newName = RandomUtils.createFileNameUseTime(oldName, "");
-
 				// 获取目的通道
 				FileChannel destChannel = new FileOutputStream(dirFile+"/"+newName).getChannel();
 				sourceChannel.transferTo(0, sourceChannel.size(), destChannel);
-
-
 				book.setImg(dirName+"/"+newName);
-
 				sourceChannel.close();
 				destChannel.close();
 			}

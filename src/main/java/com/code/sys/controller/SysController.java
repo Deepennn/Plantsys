@@ -124,28 +124,23 @@ public class SysController {
      */
     @RequestMapping("toEchartsManager")
     public String toEchartsManager(Model model){
+        // 获取当前工作人员
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-        model.addAttribute("role", user.getRid());
-        model.addAttribute("uid", user.getId());
-
+        //本单位总图书数
         QueryWrapper<Book> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("dept_id", user.getDeptId());
-        int totalNum = bookService.count(queryWrapper);//本单位总图书数
-
-//        queryWrapper.eq("status", 1);
-//        int num = bookService.count(queryWrapper);//当前在库总图书数
-
+        int totalNum = bookService.count(queryWrapper);
+        // 从外单位流入图书的数量
         QueryWrapper<BookCirculate> wrapper1 = new QueryWrapper<>();
-        // 从外单位流入的数量
         wrapper1.eq("circulate_dept_id", user.getDeptId());
         wrapper1.eq("circulate_status",1);
         int addNum = bookCirculateService.count(wrapper1);// 流入
-
+        // 给读者借出图书的数量
         QueryWrapper<BookBorrow> wrapper2 = new QueryWrapper<>();
         wrapper2.eq("dept_id", user.getDeptId());// 借出
         wrapper2.ne("borrow_status", 2);
         int subNum = bookBorrowService.count(wrapper2);
-
+        // 给外单位流出图书的数量
         QueryWrapper<BookCirculate> wrapper3 = new QueryWrapper<>();
         wrapper3.eq("dept_id", user.getDeptId());// 流出
         wrapper3.ne("circulate_status", 2);
@@ -155,7 +150,6 @@ public class SysController {
         model.addAttribute("num", totalNum+addNum-subNum1-subNum);
         model.addAttribute("addNum", addNum);
         model.addAttribute("subNum", subNum+subNum1);
-//        model.addAttribute("subNum", subNum+subNum1);
         return "system/echarts/echartsManager";
     }
 }

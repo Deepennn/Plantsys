@@ -19,7 +19,8 @@
             <property name="suffix" value=".jsp"/>
         </bean>
 
-        <!--配置文件上传-->
+        <!--配置文件上传
+        使得应用程序能够接收和处理客户端上传的文件数据-->
         <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
             <!--设置文件名的编码-->
@@ -31,6 +32,9 @@
         </bean>
 
 
-        <!--配置静态文件放行-->
+        <!--配置静态文件放行
+        将静态文件的处理委托给容器的默认Servlet
+        如果请求的资源文件不存在于Spring MVC的处理路径中，就将该请求交给默认的Servlet来处理。
+        这允许容器直接提供静态资源，而无需通过Spring MVC的控制器进行处理。-->
         <mvc:default-servlet-handler/>
 </beans>

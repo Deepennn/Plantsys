@@ -17,7 +17,7 @@
 <body class="loginBody" >
 <br>
 <h1 align="center" style="color:LightSteelBlue ; font-size: 65px;font-family: 方正粗黑宋简体,微软雅黑;">图 书 借 阅 管 理 系 统</h1>
-	<form class="layui-form" id="loginFrm" method="post" action="/login/register.action" style="height: 600px">
+	<form class="layui-form" id="loginFrm" method="post" action="/login/register.action" style="height: 615px">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 			<legend>注册</legend>
 		</fieldset>
@@ -42,7 +42,7 @@
 		</div>
 		<div class="layui-form-item input-item">
 			<label for="email">邮箱</label>
-			<input type="text" placeholder="请输入邮箱" autocomplete="off" name="email" id="email" class="layui-input" lay-verify=required|email">
+			<input type="text" placeholder="请输入邮箱" autocomplete="off" name="email" id="email" class="layui-input" lay-verify="required|email">
 		</div>
 		<div class="layui-form-item input-item">
 			<label for="address">地址</label>

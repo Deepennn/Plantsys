@@ -7,21 +7,14 @@ import com.code.sys.entity.Code;
 import com.code.sys.entity.User;
 import com.code.sys.service.CodeService;
 import com.code.sys.service.UserService;
-import com.code.sys.utils.DataGridView;
 import com.code.sys.utils.EmailUtils;
 import com.code.sys.utils.ResultObj;
 import com.code.sys.utils.WebUtils;
 import com.code.sys.vo.UserVo;
 import nl.captcha.Captcha;
 import nl.captcha.backgrounds.FlatColorBackgroundProducer;
-import nl.captcha.backgrounds.GradiatedBackgroundProducer;
-import nl.captcha.backgrounds.SquigglesBackgroundProducer;
-import nl.captcha.gimpy.RippleGimpyRenderer;
 import nl.captcha.noise.CurvedLineNoiseProducer;
-import nl.captcha.noise.StraightLineNoiseProducer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
@@ -82,7 +75,6 @@ public class LoginController {
      */
     @RequestMapping("login")
     public String login(UserVo userVo, @RequestParam String captcha, Model model) {
-
         // 从 Session 中获取之前存储的验证码
         String sessionCaptcha = (String) WebUtils.getHttpSession().getAttribute("captcha");
         if (sessionCaptcha == null || !sessionCaptcha.equals(captcha)) {
@@ -94,14 +86,13 @@ public class LoginController {
                 model.addAttribute("error", SysConstant.USER_LOGIN_CODE_ERROR_MSG);
                 return "system/main/login";
             }
-
             User user = this.userService.login(userVo);
             System.out.println("user = " + user);
             if (null != user) {
-                // 上次登陆时间
+                // 设置上次登陆时间
                 user.setLastTime(DateUtil.now());
                 this.userService.updateById(user);
-                //放入到session
+                //放入到session域中
                 WebUtils.getHttpSession().setAttribute("user", user);
                 return "system/main/index";
             } else {
@@ -121,12 +112,9 @@ public class LoginController {
                 .addNoise(new CurvedLineNoiseProducer())
                 .addText()
                 .addBackground(new FlatColorBackgroundProducer(Color.CYAN))  // 添加背景
-//                .addBackground(new SquigglesBackgroundProducer())
                 .build();
-
         // 将验证码存储在Session中
         request.getSession().setAttribute("captcha", captcha.getAnswer());
-
         // 设置响应类型为图片 返回验证码图片
         response.setContentType("image/jpeg");
         OutputStream os = response.getOutputStream();

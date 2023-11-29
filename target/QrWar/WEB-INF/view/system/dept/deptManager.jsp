@@ -112,47 +112,47 @@
     </form>
 </div>
 
-<%--查看新闻的div--%>
+<%--查看的div--%>
 <div id="viewNewsDiv" style="padding: 10px;display: none">
     <form class="layui-form" lay-filter="dataFrm1" id="dataFrm1" style="margin-right: 20px">
         <div class="layui-form-item">
             <label class="layui-form-label">单位名称:</label>
             <div class="layui-input-block">
                 <input type="text" name="id" style="display: none;">
-                <input type="text" name="name" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                <input type="text" name="name" placeholder="请输入单位名称" disabled disabledautocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">联系人:</label>
             <div class="layui-input-block">
-                <input type="text" name="contacts" placeholder="请输入联系人" autocomplete="off" class="layui-input">
+                <input type="text" name="contacts" placeholder="请输入联系人" disabled autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">联系电话:</label>
             <div class="layui-input-block">
-                <input type="text" name="phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                <input type="text" name="phone" placeholder="请输入联系电话" disabled autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">邮箱地址:</label>
             <div class="layui-input-block">
-                <input type="text" name="email" placeholder="请输入邮箱地址" autocomplete="off" class="layui-input">
+                <input type="text" name="email" placeholder="请输入邮箱地址" disabled autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">联系地址:</label>
             <div class="layui-input-block">
-                <input type="text" name="address" placeholder="请输入联系地址" autocomplete="off" class="layui-input">
+                <input type="text" name="address" placeholder="请输入联系地址" disabled autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">单位性质:</label>
             <div class="layui-input-block">
-                <input type="text" name="unitNature" placeholder="请输入单位性质" autocomplete="off" class="layui-input">
+                <input type="text" name="unitNature" placeholder="请输入单位性质" disabled autocomplete="off" class="layui-input">
             </div>
         </div>
     </form>

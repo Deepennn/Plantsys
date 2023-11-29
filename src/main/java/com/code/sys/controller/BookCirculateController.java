@@ -67,8 +67,6 @@ public class BookCirculateController {
     @RequestMapping("save")
     public ResultObj save(BookCirculate bookCirculate){
         try{
-
-
             User user = (User) WebUtils.getHttpSession().getAttribute("user");
             user = userService.getById(user);
             Book book = bookService.getById(bookCirculate.getBookId());

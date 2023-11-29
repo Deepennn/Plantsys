@@ -20,7 +20,6 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
             <property name="dataSource" ref="dataSource"/>
     </bean>
-
     <!-- 2,声明事务的传播特性 也就是通知
     用于确保方法在事务控制下执行，以保证数据的一致性和完整性-->
     <tx:advice id="advise" transaction-manager="transactionManager">

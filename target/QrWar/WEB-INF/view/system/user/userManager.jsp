@@ -19,32 +19,6 @@
     </style>
 </head>
 <body class="childrenBody">
-<%--<!-- 搜索条件开始 -->--%>
-<%--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">--%>
-<%--    <legend>查询条件</legend>--%>
-<%--</fieldset>--%>
-<%--<form class="layui-form" method="post" id="searchFrm">--%>
-
-<%--    <div class="layui-form-item">--%>
-<%--        <div class="layui-inline">--%>
-<%--            <label class="layui-form-label">用户姓名:</label>--%>
-<%--            <div class="layui-input-inline" style="padding: 5px">--%>
-<%--                <input type="text" name="realname" autocomplete="off" class="layui-input layui-input-inline"--%>
-<%--                       placeholder="请输入用户名称" style="height: 30px;border-radius: 10px">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-inline">--%>
-<%--            <button type="button"--%>
-<%--                    class="layui-btn layui-btn-normal layui-icon layui-icon-search layui-btn-radius layui-btn-sm"--%>
-<%--                    id="doSearch" style="margin-top: 4px">查询--%>
-<%--            </button>--%>
-<%--            <button type="reset"--%>
-<%--                    class="layui-btn layui-btn-warm layui-icon layui-icon-refresh layui-btn-radius layui-btn-sm"--%>
-<%--                    style="margin-top: 4px">重置--%>
-<%--            </button>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</form>--%>
 
 <!-- 数据表格开始 -->
 <table class="layui-hide" id="userTable" lay-filter="userTable"></table>
@@ -53,10 +27,80 @@
     <button type="button" class="layui-btn layui-btn-sm layui-btn-radius" lay-event="add">增加工作人员</button>
 </div>
 <div id="userBar" style="display: none;">
+    <a class="layui-btn layui-btn-warm layui-btn-xs layui-btn-radius" lay-event="viewNews">详情</a>
     <a class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit">修改</a>
     <a id="delebtn" class="layui-btn layui-btn-danger layui-btn-xs layui-btn-radius" lay-event="del">删除</a>
 </div>
 
+<%--详情div--%>
+<div id="viewNewsDiv" style="padding: 10px;display: none">
+    <form class="layui-form" lay-filter="dataFrm2" id="dataFrm2" style="margin-right: 20px">
+        <div class="layui-form-item">
+            <label class="layui-form-label">编号:</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" style="display: none;">
+                <input type="text" name="id" placeholder="请输入图书名称" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名:</label>
+            <div class="layui-input-block">
+                <input type="text" name="loginname" placeholder="请输入图书分类" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">真实姓名:</label>
+            <div class="layui-input-block">
+                <input type="text" name="realname" placeholder="请输入作者" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">性别:</label>
+            <div class="layui-input-inline">
+                <input type="radio" name="sex" value="1" title="男">
+                <input type="radio" name="sex" value="0" title="女">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话:</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" placeholder="请输入出版时间" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱:</label>
+            <div class="layui-input-block">
+                <input type="text" name="email" placeholder="请输入出版社" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址:</label>
+            <div class="layui-input-block">
+                <input type="text" name="address" placeholder="请输入页数" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">创建时间:</label>
+            <div class="layui-input-block">
+                <input type="text" name="createTime" placeholder="请输入图书价格" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">上次登陆时间:</label>
+            <div class="layui-input-block">
+                <input type="text" name="lastTime" placeholder="请输入图书价格" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-top: 20px">
+            <label class="layui-form-label">头像</label>
+            <img id="mobileCoverImg1" class="originalImg"  style="height: 50px;min-width: 50px;"/>
+        </div>
+
+    </form>
+</div>
 <!-- 添加和修改的弹出层-->
 <div style="display: none;padding: 20px" id="saveOrUpdateDiv">
     <form class="layui-form" lay-filter="dataFrm" id="dataFrm">
@@ -151,7 +195,7 @@
             , url: '/user/findPage.action' //数据接口
             , title: '用户数据表'//数据导出来的标题
             , toolbar: "#userToolBar"   //表格的工具条
-            , height: 'full-150'
+            , height: 'full-120'
             , cellMinWidth: 100 //设置列的最小默认宽度
             , page: true  //是否启用分页
             , cols: [[   //列表数据
@@ -174,7 +218,9 @@
                         }
                     }
                 }
-                , {fixed: 'right', title: '操作', toolbar: '#userBar', align: 'center', width: '300'}
+                , {field: 'lastTime', title: '上次登陆时间', align: 'center', width: '130'}
+                , {fixed: 'right', title: '操作', toolbar: '#userBar', align: 'center', width: '200'}
+
             ]],
             done: function (data, curr, count) {
                 //不是第一页时，如果当前返回的数据为0那么就返回上一页
@@ -243,6 +289,8 @@
                     $('#dept').prop('disabled', false);
                 }
                 openUpdateUser(data);
+            }else if(layEvent === 'viewNews'){
+                viewNews(data);
             }
         });
 
@@ -277,7 +325,19 @@
                 }
             });
         }
-
+        //查看
+        function viewNews(data) {
+            mainIndex = layer.open({
+                type: 1,
+                title: '查看用户信息',
+                content: $("#viewNewsDiv"),
+                area: ['700px', '540px'],
+                success: function (index) {
+                    form.val("dataFrm2", data);
+                    $('#mobileCoverImg1').attr('src', "/file/downloadFile.action?path=" + data.img);
+                }
+            });
+        }
         //保存
         form.on("submit(doSubmit)", function (obj) {
             //序列化表单数据

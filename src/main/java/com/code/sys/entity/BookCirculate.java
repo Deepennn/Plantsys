@@ -72,11 +72,6 @@ public class BookCirculate implements Serializable {
      */
     private Integer circulateStatus;
 
-    /**
-     * 归还审核状态 0待审核 1通过
-     */
-    private Integer returnStatus;
-
     @TableField(exist = false)
     private String bookName;
 
@@ -100,7 +95,6 @@ public class BookCirculate implements Serializable {
         ", phone=" + phone +
         ", remark=" + remark +
         ", circulateStatus=" + circulateStatus +
-        ", returnStatus=" + returnStatus +
         "}";
     }
 }

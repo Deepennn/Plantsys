@@ -7,10 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * <p>
  * 图书流通表 Mapper 接口
- * </p>
- *
  * @author
  * @since 2023-11-18
  */

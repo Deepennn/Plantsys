@@ -40,16 +40,15 @@ public class BookController {
     @RequestMapping("findPage")
     public DataGridView findPage(QueryVo queryVo){
         User user = (User) WebUtils.getHttpSession().getAttribute("user");
-
         Page<Object> page = PageHelper.startPage(queryVo.getPage(), queryVo.getLimit());
         QueryWrapper<Book> queryWrapper = new QueryWrapper<>();
         if (user.getRid() == 2) {
             queryWrapper.eq("dept_id", user.getDeptId());
         }
         if (user.getRid() == 3) {
-//            queryWrapper.eq("status", 1);
             queryWrapper.eq("is_open", 1);
         }
+        // 模糊查询或查询所有图书
         queryWrapper.like(null != queryVo.getId(), "id", queryVo.getId());
         queryWrapper.like(StrUtil.isNotBlank(queryVo.getName()), "name", queryVo.getName());
         queryWrapper.like(StrUtil.isNotBlank(queryVo.getAuthor()), "author", queryVo.getAuthor());
@@ -93,7 +92,7 @@ public class BookController {
         return new DataGridView(page.getTotal(),data);
     }
     /**
-     * 添加/修改
+     * 添加
      * @return
      */
     @RequestMapping("save")
@@ -105,7 +104,6 @@ public class BookController {
             return new ResultObj(-1,"图书已存在");
         }
         try{
-
             User user = (User) WebUtils.getHttpSession().getAttribute("user");
             if (null != user.getDeptId()) {
                 book.setDeptId(user.getDeptId());
@@ -120,7 +118,7 @@ public class BookController {
     }
 
     /**
-     * 添加/修改
+     * 修改
      * @return
      */
     @RequestMapping("update")
@@ -141,7 +139,6 @@ public class BookController {
     @RequestMapping("delete")
     public ResultObj delete(String id){
         try {
-            System.out.println("delete:id="+id);
             Book book = this.bookService.getById(id);
             if (book.getStatus() == 2) {
                 return new ResultObj(-1, "删除失败，图书正在借阅中");

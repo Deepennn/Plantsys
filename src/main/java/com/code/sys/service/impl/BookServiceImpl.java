@@ -7,11 +7,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
- *  服务实现类
- * @author 
- * @since 2023-11-17
+ *  图书 服务实现类
  */
 @Service
 public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements BookService {
-
 }
