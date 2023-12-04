@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantsys.mapper.PlantMapper">
+
+    <resultMap id="BaseResultMap" type="com.plantsys.entity.Plant">
+            <id property="plantId" column="plant_id" jdbcType="INTEGER"/>
+            <result property="pName" column="p_name" jdbcType="VARCHAR"/>
+            <result property="genusId" column="genus_id" jdbcType="INTEGER"/>
+            <result property="feature" column="feature" jdbcType="VARCHAR"/>
+            <result property="value" column="value" jdbcType="VARCHAR"/>
+            <result property="point" column="point" jdbcType="VARCHAR"/>
+            <result property="disease" column="disease" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        plant_id,p_name,genus_id,
+        feature,value,point,
+        disease
+    </sql>
+    <select id="selectByMap" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from plant
+        where 1 = 1
+        <if test="map.plantId != null ">
+            and plant_id = #{map.plantId}
+        </if>
+        <if test="map.keyword != null and map.keyword != '' ">
+            <bind name="keyword" value="'%' + map.keyword + '%'" />
+            and p_name like #{keyword}
+        </if>
+    </select>
+    <delete id="deleteByPlantId">
+        delete
+        from plant
+        where plant_id = #{plantId,jdbcType=NUMERIC}
+    </delete>
+    <insert id="addSelective">
+        insert into plant
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="plantId != null">plant_id,</if>
+            <if test="pName != null">p_name,</if>
+            <if test="genusId != null">genus_id,</if>
+            <if test="feature != null">feature,</if>
+            <if test="value != null">value,</if>
+            <if test="point != null">point,</if>
+            <if test="disease != null">disease,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="plantId != null">#{plantId,jdbcType=INTEGER},</if>
+            <if test="pName != null">#{pName,jdbcType=VARCHAR},</if>
+            <if test="genusId != null">#{genusId,jdbcType=INTEGER},</if>
+            <if test="feature != null">#{feature,jdbcType=VARCHAR},</if>
+            <if test="value != null">#{value,jdbcType=VARCHAR},</if>
+            <if test="point != null">#{point,jdbcType=VARCHAR},</if>
+            <if test="disease != null">#{disease,jdbcType=INTEGER},</if>
+        </trim>
+    </insert>
+    <update id="updateSelective">
+        update plant
+        <set>
+            <if test="pName != null">p_name=#{pName,jdbcType=VARCHAR},</if>
+            <if test="genusId != null">genus_id=#{genusId,jdbcType=NUMERIC},</if>
+            <if test="feature != null">feature=#{feature,jdbcType=VARCHAR},</if>
+            <if test="value != null">value=#{value,jdbcType=VARCHAR},</if>
+            <if test="point != null">point=#{point,jdbcType=VARCHAR},</if>
+            <if test="disease != null">disease=#{disease,jdbcType=NUMERIC},</if>
+        </set>
+        where plantId = #{plantId,jdbcType=NUMERIC}
+    </update>
+</mapper>
