@@ -25,14 +25,14 @@ public class PlantController {
     PlantService plantService;
 
 
-    //前往添加图书页面
+    //前往添加养护任务页面
     @RequestMapping("toAddPlant.do")
     public ModelAndView toAddPlant() {
         return new ModelAndView("view/plant/add");
     }
 
 
-    //添加图书
+    //添加养护任务
     @RequestMapping("addPlant")
     @ResponseBody
     public boolean addPlant(Plant plant){
@@ -43,7 +43,7 @@ public class PlantController {
     }
 
 
-    //删除图书
+    //删除养护任务
     @RequestMapping("deletePlant")
     @ResponseBody
     public boolean deletePlant(Integer plantId){
@@ -54,7 +54,7 @@ public class PlantController {
     }
 
 
-    //查询图书
+    //查询养护任务
     @RequestMapping("plantList.do")
     public ModelAndView plantList(
             @RequestParam(defaultValue="1") Integer currentPage, HttpServletRequest request, HttpSession session, Map<String, Object> _map){
@@ -73,7 +73,7 @@ public class PlantController {
     }
 
 
-    //查询图书
+    //查询养护任务
     @RequestMapping("plantList2.do")
     public ModelAndView plantList2(HttpServletRequest request, HttpSession session, Map<String, Object> _map){
         String keyword = request.getParameter("keyword");

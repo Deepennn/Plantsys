@@ -356,6 +356,13 @@
 
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>Central repository</id>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
+
     <build>
         <!--配置内部tomcat插件-->
         <plugins>

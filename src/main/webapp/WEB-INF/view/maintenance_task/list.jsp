@@ -25,7 +25,7 @@
 						<ol class="breadcrumb mb-0 p-0">
 							<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 							</li>
-							<li class="breadcrumb-item active" aria-current="page">图书列表</li>
+							<li class="breadcrumb-item active" aria-current="page">养护任务列表</li>
 						</ol>
 					</nav>
 				</div>
@@ -34,52 +34,53 @@
 
 			<div class="card">
 				<div class="card-body">
-					<form class="float-lg-end" action="bookList.do" method="post">
-						<div class="col-12">
-							<button type="submit" class="btn btn-primary mb-3 mb-lg-0">切换视图</button>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="card-body">
 					<div class="table-responsive">
 						<table id="example2" class="table table-striped table-bordered">
 							<thead>
 							<tr>
-								<th>图书编号</th>
-								<th>书名</th>
-								<th>图片</th>
-								<th>类型</th>
-								<th>本数</th>
-								<th>所属单位</th>
+								<th>养护任务编号</th>
+								<th>任务名称</th>
+								<th>任务描述</th>
+								<th>养护时间</th>
+								<th>养护地点</th>
+								<th>养护人员</th>
+								<th>养护对象</th>
+								<th>创建人员</th>
+								<th>创建时间</th>
+								<th>更新时间</th>
+								<th>任务状态</th>
 								<th>操作</th>
 							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${booklist}" var="data">
+							<c:forEach items="${maintenancetasklist}" var="data">
 							<tr>
-								<td>${data.bookid}</td>
-								<td>${data.bookname}</td>
-								<td><img src="/images/${data.imagepath}" id="preview_img" class="product-img-2"></td>
-								<td>${data.bookcategory}</td>
-								<td>${data.bookcount}</td>
-								<td>${data.unit.unitname}</td>
+								<td>${data.taskId}</td>
+								<td>${data.taskName}</td>
+								<td>${data.taskDescription}</td>
+								<td>${data.maintenanceTime}</td>
+								<td>${data.maintenanceSite}</td>
+								<td>${data.uid}</td>
+								<td>${data.plantId}</td>
+								<td>${data.creator}</td>
+								<td>${data.creationTime}</td>
+								<td>${data.updateTime}</td>
 								<td>
-									<a href="toBookDetail.do?bookid=${data.bookid}" type="button" class="btn btn-outline-secondary">详情</a>
-									<c:if test="${admin!=null || worker!=null}">
-										<a href="toUpdateBook.do?bookid=${data.bookid}" type="button" class="btn btn-outline-success">修改</a>
-										<c:if test="${data.bookcount>0}" >
-											<button type="button" class="btn btn-outline-danger"
-													onclick="del(${data.bookid})"
-													disabled="disabled"
-											>删除</button>
+									<c:if test="${data.taskStatus==0}"><span class="badge rounded-pill text-primary bg-light-success p-2 text-uppercase px-3">待完成</span></c:if>
+									<c:if test="${data.taskStatus==1}"><span class="badge rounded-pill text-primary bg-light-success p-2 text-uppercase px-3">已完成</span></c:if>
+								</td>
+								<td>
+									<c:if test="${maintainer!=null}">
+										<c:if test="${data.taskStatus==0}">
+											<button type="button" class="btn btn-outline-primary"
+													onclick="completeTask(${data.taskId})"
+											>完成</button>
 										</c:if>
-										<c:if test="${data.bookcount<1}" >
-											<button type="button" class="btn btn-outline-danger"
-													onclick="del(${data.bookid})"
-											>删除</button>
+										<c:if test="${data.taskStatus!=0}">
+											<button type="button" class="btn btn-outline-primary"
+													onclick="completeTask(${data.taskId})"
+													disabled="disabled"
+											>完成</button>
 										</c:if>
 									</c:if>
 								</td>
@@ -125,19 +126,19 @@
 
 <script>
 
-	function del(bookid){
-		if(confirm("确定删除?")){
+	function completeTask(taskId){
+		if(confirm("确定完成?")){
 			$.ajax({
-				url:"deleteBook",
-				data:{"bookid": bookid},
+				url:"completeMaintenanceTask",
+				data:{"taskId": taskId},
 				type:"post",
 				dataType:"json",
 				success:function (data) {
 					if (data) {
-						alert("删除成功");
+						alert("完成成功");
 						document.location.reload();//当前页面
 					}else{
-						alert("删除失败");
+						alert("完成失败");
 					}
 				}
 			});
@@ -145,7 +146,6 @@
 	}
 
 </script>
-
 
 </body>
 

@@ -130,9 +130,9 @@
                     <div class="menu-title">植物养护管理</div>
                 </a>
                 <ul>
-                    <li> <a href="plantList.do"><i class="bx bx-right-arrow-alt"></i>植物养护任务</a>
+                    <li> <a href="maintenanceTaskList.do"><i class="bx bx-right-arrow-alt"></i>植物养护任务</a>
                     </li>
-                    <li> <a href="toAddPlant.do"><i class="bx bx-right-arrow-alt"></i>添加养护任务</a>
+                    <li> <a href="toAddMaintenanceTask.do"><i class="bx bx-right-arrow-alt"></i>添加养护任务</a>
                     </li>
                 </ul>
             </li>
@@ -161,9 +161,7 @@
                     <div class="menu-title">植物养护管理</div>
                 </a>
                 <ul>
-                    <li> <a href="plantList.do"><i class="bx bx-right-arrow-alt"></i>植物养护任务</a>
-                    </li>
-                    <li> <a href="toAddPlant.do"><i class="bx bx-right-arrow-alt"></i>更新养护任务</a>
+                    <li> <a href="maintenanceTaskList.do"><i class="bx bx-right-arrow-alt"></i>植物养护任务</a>
                     </li>
                 </ul>
             </li>
