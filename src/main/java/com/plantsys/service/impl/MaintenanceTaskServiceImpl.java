@@ -41,6 +41,11 @@ public class MaintenanceTaskServiceImpl extends ServiceImpl<MaintenanceTaskMappe
     public List<MaintenanceTask> selectByMap(Map<String, Object> map) {
         return mapper.selectByMap(map);
     }
+
+    @Override
+    public int deleteByPlantId(Integer plantId) {
+        return mapper.deleteByPlantId(plantId);
+    }
 }
 
 

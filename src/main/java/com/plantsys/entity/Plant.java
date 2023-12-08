@@ -4,8 +4,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  *
@@ -23,32 +24,23 @@ public class Plant implements Serializable {
     /**
      *
      */
-    private String pName;
+    private String plantName;
 
     /**
      *
      */
-    private Integer genusId;
+    private Integer speciesId;
 
+    @TableField(exist = false)
+    private String genusName;
+    @TableField(exist = false)
+    private String familyName;
+    @TableField(exist = false)
+    private String diseaseName;
     /**
      *
      */
-    private String feature;
-
-    /**
-     *
-     */
-    private String value;
-
-    /**
-     *
-     */
-    private String point;
-
-    /**
-     *
-     */
-    private Integer disease;
+    private Integer diseaseId;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -66,12 +58,9 @@ public class Plant implements Serializable {
         }
         Plant other = (Plant) that;
         return (this.getPlantId() == null ? other.getPlantId() == null : this.getPlantId().equals(other.getPlantId()))
-            && (this.getPName() == null ? other.getPName() == null : this.getPName().equals(other.getPName()))
-            && (this.getGenusId() == null ? other.getGenusId() == null : this.getGenusId().equals(other.getGenusId()))
-            && (this.getFeature() == null ? other.getFeature() == null : this.getFeature().equals(other.getFeature()))
-            && (this.getValue() == null ? other.getValue() == null : this.getValue().equals(other.getValue()))
-            && (this.getPoint() == null ? other.getPoint() == null : this.getPoint().equals(other.getPoint()))
-            && (this.getDisease() == null ? other.getDisease() == null : this.getDisease().equals(other.getDisease()));
+            && (this.getPlantName() == null ? other.getPlantName() == null : this.getPlantName().equals(other.getPlantName()))
+            && (this.getSpeciesId() == null ? other.getSpeciesId() == null : this.getSpeciesId().equals(other.getSpeciesId()))
+            && (this.getDiseaseId() == null ? other.getDiseaseId() == null : this.getDiseaseId().equals(other.getDiseaseId()));
     }
 
     @Override
@@ -79,12 +68,9 @@ public class Plant implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getPlantId() == null) ? 0 : getPlantId().hashCode());
-        result = prime * result + ((getPName() == null) ? 0 : getPName().hashCode());
-        result = prime * result + ((getGenusId() == null) ? 0 : getGenusId().hashCode());
-        result = prime * result + ((getFeature() == null) ? 0 : getFeature().hashCode());
-        result = prime * result + ((getValue() == null) ? 0 : getValue().hashCode());
-        result = prime * result + ((getPoint() == null) ? 0 : getPoint().hashCode());
-        result = prime * result + ((getDisease() == null) ? 0 : getDisease().hashCode());
+        result = prime * result + ((getPlantName() == null) ? 0 : getPlantName().hashCode());
+        result = prime * result + ((getSpeciesId() == null) ? 0 : getSpeciesId().hashCode());
+        result = prime * result + ((getDiseaseId() == null) ? 0 : getDiseaseId().hashCode());
         return result;
     }
 
@@ -95,12 +81,9 @@ public class Plant implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", plantId=").append(plantId);
-        sb.append(", pName=").append(pName);
-        sb.append(", genusId=").append(genusId);
-        sb.append(", feature=").append(feature);
-        sb.append(", value=").append(value);
-        sb.append(", point=").append(point);
-        sb.append(", disease=").append(disease);
+        sb.append(", plantName=").append(plantName);
+        sb.append(", speciesId=").append(speciesId);
+        sb.append(", diseaseId=").append(diseaseId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

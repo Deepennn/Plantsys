@@ -88,4 +88,9 @@
         </set>
         where task_id = #{taskId,jdbcType=NUMERIC}
     </update>
+    <delete id="deleteByPlantId">
+        delete
+        from maintenance_task
+        where plant_id = #{plantId,jdbcType=NUMERIC}
+    </delete>
 </mapper>

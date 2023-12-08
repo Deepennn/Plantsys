@@ -20,4 +20,6 @@ public interface MaintenanceTaskService extends IService<MaintenanceTask> {
     int updateSelective(MaintenanceTask maintenanceTask);
 
     List<MaintenanceTask> selectByMap(@Param("map") Map<String, Object> map);
+
+    int deleteByPlantId(@Param("plantId") Integer plantId);
 }

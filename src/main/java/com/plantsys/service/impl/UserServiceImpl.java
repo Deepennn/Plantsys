@@ -2,9 +2,8 @@ package com.plantsys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.plantsys.entity.User;
-import com.plantsys.service.UserService;
 import com.plantsys.mapper.UserMapper;
-import org.apache.ibatis.annotations.Param;
+import com.plantsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

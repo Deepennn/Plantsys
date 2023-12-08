@@ -4,8 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-    <mappers>
-<!--        <mapper resource="com/study/mapper/UserMapper.xml"/>-->
-    </mappers>
+    <settings>
+        <!-- 将数据库列名中的下划线命名规则（如user_name）映射为驼峰命名规则（如userName）-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
 
+    <!-- 用于实现分页查询功能 -->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+        </plugin>
+    </plugins>
 </configuration>
