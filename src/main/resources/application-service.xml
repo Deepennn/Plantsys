@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--扫描服务层-->
-    <context:component-scan base-package="com.code.sys.service.impl"/>
+    <context:component-scan base-package="com.plantsys.service.impl"/>
 
     <!-- 1,声明事务管理器 指定要使用的数据源
     DataSourceTransactionManager 会与数据源（如数据库连接池）一起工作，确保在事务管理下的数据库操作要么全部成功，要么全部失败。
@@ -39,7 +39,7 @@
     <!-- 3进行AOP织入 -->
     <aop:config>
         <!-- 声明切面 -->
-        <aop:pointcut expression="execution(* com.code.sys.service.impl.*.*(..))" id="pc1"/>
+        <aop:pointcut expression="execution(* com.plantsys.service.impl.*.*(..))" id="pc1"/>
         <!-- 织入 -->
         <aop:advisor advice-ref="advise" pointcut-ref="pc1"/>
     </aop:config>

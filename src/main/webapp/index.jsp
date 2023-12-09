@@ -7,7 +7,7 @@
     <title>登陆</title>
 </head>
 <body>
-    <jsp:forward page="/login/toLogin.action"/>
+    <jsp:forward page="login/toLogin.action"/>
 
 </body>
 </html>

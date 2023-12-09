@@ -8,6 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ssmSystem" />
+        <module name="PlantSystem" />
+        <module name="plantSystem" />
       </profile>
     </annotationProcessing>
   </component>

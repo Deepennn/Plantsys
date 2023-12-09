@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
         <!--扫描controller-->
-        <context:component-scan base-package="com.code.sys.controller"/>
+        <context:component-scan base-package="com.plantsys.controller"/>
 
         <!--配置映射器和适配器-->
         <mvc:annotation-driven/>

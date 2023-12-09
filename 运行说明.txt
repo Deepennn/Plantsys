@@ -1,6 +1,0 @@
-技术 ssm jsp mysql maven 
-环境 jdk1.8 mysql5.6 tomcat8 maven
-开发工具 IDEA Navicat
-1.先将sql导入数据库
-2.替换jdbc.properties 中的账号密码为你本地数据库的账号密码
-4.账号：admin，密码：123456

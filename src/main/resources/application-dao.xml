@@ -22,7 +22,7 @@
         <!--设置最大连接数-->
         <property name="maxActive" value="10"></property>
         <!--设置等待时间-->
-        <property name="maxWait" value="5000"></property>
+        <property name="maxWait" value="3000"></property>
 
         <property name="filters" value="stat"></property>
     </bean>
@@ -34,16 +34,16 @@
         <!--注入mapper.xml-->
         <property name="mapperLocations">
             <array>
-                <value>classpath:mapper/*/*Mapper.xml</value>
+                <value>classpath:mapper/*Mapper.xml</value>
             </array>
         </property>
     </bean>
     <!--扫描mapper接口
-    告诉Spring容器在包 "com.code.sys.mapper" 中扫描所有的Mapper接口，
+    告诉Spring容器在包 "com.plantsys.mapper" 中扫描所有的Mapper接口，
     并使用名为 "sqlSessionFactory" 的SqlSessionFactory Bean来创建这些Mapper接口的实现类-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--注入mapper接口所在的包-->
-        <property name="basePackage" value="com.code.sys.mapper">
+        <property name="basePackage" value="com.plantsys.mapper">
         </property>
         <!--注入sqlSessionFactory-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
